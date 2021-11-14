@@ -51,11 +51,12 @@ table {
 }
 html{
   font-size: 18px;
-  font-family: "Pretendard-Light";
+  font-family: "Pretendard Variable";
+	font-weight: 300;
 }
 `;
 
-const GlobalCss = function () {
+const GlobalCss = () => {
   return <GlobalStyle />;
 };
 
