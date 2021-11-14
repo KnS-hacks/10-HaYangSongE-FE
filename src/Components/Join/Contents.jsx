@@ -1,23 +1,25 @@
 import React from "react";
 import styled from "styled-components";
 import Button from "../Common/Button";
-import Inputs from "../Common/Inputs";
+import Inputs, { InputNum } from "../Common/Inputs";
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
   width: 50vw;
   height: 100vh;
   margin: 0 auto;
+
   &:nth-child(1) > div {
     height: 65%;
     padding: 50px;
   }
 
+  // 접종 여부, 접종일 묶기
+  &:nth-child(1) > div > div {
+    display: flex;
+  }
+
   button {
-    margin-top: 30px;
+    margin-top: 50px;
   }
 `;
 
@@ -48,11 +50,15 @@ const Contents = () => {
           inputPlaceholder="비밀번호를 다시 한 번 입력해주세요."
           inputContent="비밀번호 확인"
         />
-        <Inputs
-          inputWidth="200px"
-          inputContent="마지막 접종일"
-          inputType="date"
-        />
+        <div>
+          <InputNum inputContent="백신 접종 여부" />
+          <Inputs
+            inputWidth="200px"
+            inputContent="마지막 접종일"
+            inputType="date"
+          />
+        </div>
+
         <Button Width="590px" Height="70px" Content="회원가입" />
       </div>
     </Container>

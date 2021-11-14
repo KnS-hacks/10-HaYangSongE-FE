@@ -69,3 +69,42 @@ Inputs.defaultProps = {
 };
 
 export default Inputs;
+
+const InputNumber = styled.input`
+  font-family: "Pretendard Variable";
+  font-size: inherit;
+  box-sizing: border-box;
+  padding: 8px;
+  margin-right: 10px;
+  border: 1.5px solid ${Colors.black};
+  width: 50px;
+  height: 45px;
+  &::placeholder {
+    font-family: "Pretendard Variable";
+    font-weight: 300;
+  }
+`;
+
+const InputText = styled.span`
+  font-size: 1.2rem;
+  font-weight: 400;
+  width: 50px;
+`;
+
+export const InputNum = ({ inputContent }) => {
+  return (
+    <Container>
+      <InputName>{inputContent}</InputName>
+      <InputNumber type="number" min="0" max="2" />
+      <InputText>차</InputText>
+    </Container>
+  );
+};
+
+InputNum.propTypes = {
+  inputContent: PropTypes.string,
+};
+
+InputNum.defaultProps = {
+  inputContent: "None",
+};
