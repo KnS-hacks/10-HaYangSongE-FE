@@ -1,11 +1,14 @@
 import "./App.css";
 import React from "react";
+import GlobalCss from "./Assets/GlobalCss";
+import Router from "./Router/Router";
 
-const App = function () {
+const App = () => {
   return (
-    <div>
-      <p>dd</p>
-    </div>
+    <>
+      <GlobalCss />
+      <Router />
+    </>
   );
 };
 
