@@ -1,7 +1,12 @@
-import React from "react";
+import React from 'react';
+import Contents from '../Components/Login/Contents';
 
 const TestPage = () => {
-  return <div>Test Page</div>;
+  return (
+    <div>
+      <Contents />
+    </div>
+  );
 };
 
 export default TestPage;

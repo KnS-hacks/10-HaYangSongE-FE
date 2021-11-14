@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import { ReactComponent as Logo } from "../../Assets/Icons/Logo.svg";
-import { ReactComponent as Home } from "../../Assets/Icons/Home.svg";
-import { ReactComponent as Search } from "../../Assets/Icons/Search.svg";
-import { ReactComponent as MyReservation } from "../../Assets/Icons/MyReservation.svg";
-import { ReactComponent as Profile } from "../../Assets/Icons/Profile.svg";
+import React from 'react';
+import styled from 'styled-components';
+import { ReactComponent as Logo } from '../../Assets/Icons/Logo.svg';
+import { ReactComponent as Home } from '../../Assets/Icons/Home.svg';
+import { ReactComponent as Search } from '../../Assets/Icons/Search.svg';
+import { ReactComponent as MyReservation } from '../../Assets/Icons/MyReservation.svg';
+import { ReactComponent as Profile } from '../../Assets/Icons/Profile.svg';
 // import Colors from "../../Assets/Colors/Colors";
 
 const Bar = styled.div`

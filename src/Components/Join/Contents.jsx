@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import Button from "../Common/Button";
-import Inputs, { InputNum } from "../Common/Inputs";
+import React from 'react';
+import styled from 'styled-components';
+import Button from '../Common/Button';
+import Inputs, { InputNum } from '../Common/Inputs';
 
 const Container = styled.div`
   width: 50vw;
@@ -27,7 +27,7 @@ const Title = styled.p`
   text-align: center;
   font-weight: 700;
   font-size: 2rem;
-  padding: 30px 30px 40px 30px;
+  padding: 50px 30px 40px 30px;
 `;
 
 const Contents = () => {
