@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import PropTypes from "prop-types";
-import Colors from "../../Assets/Colors/Colors";
+import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import Colors from '../../Assets/Colors/Colors';
 
 const Container = styled.div`
   display: flex;
@@ -10,15 +10,15 @@ const Container = styled.div`
 `;
 
 const Input = styled.input`
-  font-family: "Pretendard Variable";
+  font-family: 'Pretendard Variable';
   font-size: inherit;
   box-sizing: border-box;
   padding: 8px;
   border: 1.5px solid ${Colors.black};
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
+  width: ${props => props.width};
+  height: ${props => props.height};
   &::placeholder {
-    font-family: "Pretendard Variable";
+    font-family: 'Pretendard Variable';
     font-weight: 300;
   }
 `;
@@ -61,26 +61,26 @@ Inputs.propTypes = {
 };
 
 Inputs.defaultProps = {
-  inputType: "text",
-  inputWidth: "450px",
-  inputHeight: "45px",
-  inputContent: "None",
-  inputPlaceholder: "None",
+  inputType: 'text',
+  inputWidth: '450px',
+  inputHeight: '45px',
+  inputContent: 'None',
+  inputPlaceholder: 'None',
 };
 
 export default Inputs;
 
 const InputNumber = styled.input`
-  font-family: "Pretendard Variable";
+  font-family: 'Pretendard Variable';
   font-size: inherit;
   box-sizing: border-box;
   padding: 8px;
   margin-right: 10px;
   border: 1.5px solid ${Colors.black};
-  width: 50px;
+  width: 70px;
   height: 45px;
   &::placeholder {
-    font-family: "Pretendard Variable";
+    font-family: 'Pretendard Variable';
     font-weight: 300;
   }
 `;
@@ -88,9 +88,9 @@ const InputNumber = styled.input`
 const InputText = styled.span`
   font-size: 1.2rem;
   font-weight: 400;
-  width: 50px;
+  width: 30px;
 `;
-
+// n차 체크하는 input
 export const InputNum = ({ inputContent }) => {
   return (
     <Container>
@@ -106,5 +106,53 @@ InputNum.propTypes = {
 };
 
 InputNum.defaultProps = {
-  inputContent: "None",
+  inputContent: 'None',
+};
+
+const InputLogin = styled.input`
+  font-family: 'Pretendard Variable';
+  font-size: inherit;
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 8px;
+  margin-right: 10px;
+  border: none;
+  outline: none;
+  height: 45px;
+  width: 100%;
+  &::placeholder {
+    font-family: 'Pretendard Variable';
+    font-weight: 300;
+  }
+`;
+
+// 아이콘 포함 input
+export const LoginInput = ({
+  inputType,
+  inputWidth,
+  inputHeight,
+  inputPlaceholder,
+}) => {
+  return (
+    <InputLogin
+      type={inputType}
+      width={inputWidth}
+      height={inputHeight}
+      placeholder={inputPlaceholder}
+    />
+  );
+};
+
+LoginInput.propTypes = {
+  inputType: PropTypes.string,
+  inputWidth: PropTypes.string,
+  inputHeight: PropTypes.string,
+  inputPlaceholder: PropTypes.string,
+};
+
+LoginInput.defaultProps = {
+  inputType: 'text',
+  inputWidth: '100%',
+  inputHeight: '45px',
+  inputPlaceholder: 'None',
 };
