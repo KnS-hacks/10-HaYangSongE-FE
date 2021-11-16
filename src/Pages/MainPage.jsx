@@ -1,7 +1,8 @@
 import React from 'react';
+import Main from '../Layouts/Main/Main';
 
 const MainPage = () => {
-  return <div>MainPage</div>;
+  return <Main />;
 };
 
 export default MainPage;
