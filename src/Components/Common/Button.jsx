@@ -15,20 +15,28 @@ const Btn = styled.button`
   &:hover {
     transition: 0.3s;
     background-color: ${props =>
-      props.color === Colors.main ? Colors.main : '#ffffff'};
+      props.backgroundcolor === Colors.main ? '#ffffff' : Colors.main};
     color: ${props => (props.color === '#ffffff' ? Colors.main : '#ffffff')};
   }
 
   cursor: pointer;
 `;
 
-const Button = ({ Width, Height, Content, backgroundColor, Color }) => {
+const Button = ({
+  Width,
+  Height,
+  Content,
+  backgroundColor,
+  Color,
+  ClickFunc,
+}) => {
   return (
     <Btn
       width={Width}
       height={Height}
       backgroundcolor={backgroundColor}
       color={Color}
+      onClick={ClickFunc}
     >
       {Content}
     </Btn>
@@ -41,6 +49,7 @@ Button.propTypes = {
   Content: PropTypes.string,
   backgroundColor: PropTypes.string,
   Color: PropTypes.string,
+  ClickFunc: PropTypes.func.isRequired,
 };
 
 Button.defaultProps = {
