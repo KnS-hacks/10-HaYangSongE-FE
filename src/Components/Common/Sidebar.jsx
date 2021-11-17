@@ -11,25 +11,40 @@ const Bar = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 5%;
+  position: fixed;
+  left: 0;
+  width: 100px;
   height: 100vh;
-  padding: 50px;
-  box-shadow: rgba(2, 2, 2, 0.15) 2.4px 2.4px 3.2px;
+  padding: 20px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 `;
 
 const LogoDiv = styled.div`
   height: 10%;
+  &:hover {
+    cursor: pointer;
+    transition: 0.3s;
+  }
 `;
 
 const TopIcon = styled.div`
-  height: 70%;
+  height: 75%;
 `;
 
 const IconWrapper = styled.div`
   box-sizing: border-box;
   padding: 20px;
+  &:hover {
+    cursor: pointer;
+    transition: 0.3s;
+  }
 `;
-const BottomIcon = styled.div``;
+const BottomIcon = styled.div`
+  &:hover {
+    cursor: pointer;
+    transition: 0.3s;
+  }
+`;
 
 function Sidebar() {
   return (
