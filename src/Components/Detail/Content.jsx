@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Colors from '../../Assets/Colors/Colors';
 import TestRes from '../../Assets/Images/TestRestaurant.jpg';
 import Button from '../Common/Button';
@@ -17,7 +18,7 @@ const BtnDiv = styled.div`
 
 const Container = styled.div``;
 
-const Content = () => {
+const Content = ({ restaurantName, waiting, address, step }) => {
   const [visible, setVisible] = useState(false);
   const toggleModal = () => {
     setVisible(true);
@@ -46,9 +47,25 @@ const Content = () => {
           Color="#ffffff"
         />
       </BtnDiv>
-      <Modal title="대기 등록" visible={visible} closeModal={closeModal} />
+      <Modal
+        title="대기 등록"
+        visible={visible}
+        closeModal={closeModal}
+        // 가게 정보
+        restaurantName={restaurantName}
+        waiting={waiting}
+        address={address}
+        step={step}
+      />
     </>
   );
+};
+
+Content.propTypes = {
+  restaurantName: PropTypes.string.isRequired,
+  address: PropTypes.string.isRequired,
+  waiting: PropTypes.number.isRequired,
+  step: PropTypes.number.isRequired,
 };
 
 export default Content;
