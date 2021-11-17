@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-// import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../Assets/Icons/Logo.svg';
 import { ReactComponent as Key } from '../../Assets/Icons/Key.svg';
 import { ReactComponent as Id } from '../../Assets/Icons/Id.svg';
@@ -50,6 +50,21 @@ const JoinInfo = styled.p`
 `;
 
 const Contents = () => {
+  const history = useHistory();
+
+  // input 관련 로직
+  const [inputs, setinputs] = useState({});
+
+  const handleInputs = e => {
+    setinputs({
+      ...inputs,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const login = () => {
+    console.log(inputs);
+    history.push('/select');
+  };
   return (
     <Container>
       <Content>
@@ -57,17 +72,25 @@ const Contents = () => {
         <InputContainer>
           <InputDiv>
             <Id width="30" height="30" />
-            <LoginInput inputPlaceholder="아이디를 입력해주세요." />
+            <LoginInput
+              inputChange={handleInputs}
+              inputName="userId"
+              inputPlaceholder="아이디를 입력해주세요."
+              inputValue={inputs.userId}
+            />
           </InputDiv>
           <InputDiv>
             <Key width="30" height="30" />
             <LoginInput
+              inputChange={handleInputs}
+              inputName="pw"
               inputType="password"
+              inputValue={inputs.pw}
               inputPlaceholder="비밀번호를 입력해주세요."
             />
           </InputDiv>
         </InputContainer>
-        <Button Content="로그인" Width="100%" Height="60px" />
+        <Button Content="로그인" Width="100%" Height="60px" ClickFunc={login} />
         <StyledLink Url="/join" Color={Colors.main}>
           <JoinInfo>아직 계정이 없으신가요?</JoinInfo>
         </StyledLink>

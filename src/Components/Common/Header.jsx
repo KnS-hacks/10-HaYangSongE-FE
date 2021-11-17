@@ -1,32 +1,48 @@
 import React from 'react';
 import styled from 'styled-components';
-// import Colors from '../../Assets/Colors/Colors';
+import Colors from '../../Assets/Colors/Colors';
 
 // 전체 헤더바
-const Bar = styled.div`
-  display: flex;
-  flex-direction: row; // 아이템 가로 배치
-  width: auto;
-  height: 10%;
-  font-family: 'Pretendard Variable';
-  font-size: 1.2rem;
-  padding: 30px;
-  cursor: pointer;
+const Bar = styled.header`
+  position: fixed;
+  left: 150px;
+  top: 0;
+  width: auto; // 사이드바 하고 나머지로 되고싶다,,
+  height: 80px;
+  font-size: 1.5rem;
+  padding: 20px;
 `;
 
 // 헤더 안 아이템
 const ContentDiv = styled.div`
-  padding-right: 30px; // 아이템 간 간격 30px
+  display: flex;
+  align-items: center;
+  // justify-content: space-around;
+  padding: 20px;
+`;
+
+// 아이템 내용
+const Content = styled.p`
+  padding-right: 10px;
+  margin: 10px;
   &:hover {
+    cursor: pointer;
+    transition: 0.1s;
     font-weight: 700; // 마우스 올렸을 때 Bold
+    border-bottom: 5px solid ${Colors.main}; // 밑줄
+  }
+  :last-child {
+    padding-right: 0px;
   }
 `;
 
 function Headerbar() {
   return (
     <Bar>
-      <ContentDiv>서북구</ContentDiv>
-      <ContentDiv>동남구</ContentDiv>
+      <ContentDiv>
+        <Content>서북구</Content>
+        <Content>동남구</Content>
+      </ContentDiv>
     </Bar>
   );
 }

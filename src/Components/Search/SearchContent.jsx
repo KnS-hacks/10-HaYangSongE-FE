@@ -55,7 +55,6 @@ const SearchContent = ({ listData }) => {
       item => item.branch_name.indexOf(searchText) > -1,
     );
     setresultList(filteredList);
-    console.log(resultList);
   };
 
   // 입력값이 바뀔 때마다 필터링

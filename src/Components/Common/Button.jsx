@@ -5,13 +5,14 @@ import Colors from '../../Assets/Colors/Colors';
 
 const Btn = styled.button`
   font-family: 'Pretendard Variable';
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 700;
   border: 2.5px solid ${Colors.main};
   background-color: ${props => props.backgroundcolor};
   color: ${props => props.color};
   width: ${props => props.width};
   height: ${props => props.height};
+  cursor: pointer;
   &:hover {
     transition: 0.3s;
     background-color: ${props =>
@@ -19,7 +20,12 @@ const Btn = styled.button`
     color: ${props => (props.color === '#ffffff' ? Colors.main : '#ffffff')};
   }
 
-  cursor: pointer;
+  &:disabled {
+    border: none;
+    color: black;
+    cursor: not-allowed;
+    background-color: #cecece;
+  }
 `;
 
 const Button = ({
@@ -29,6 +35,7 @@ const Button = ({
   backgroundColor,
   Color,
   ClickFunc,
+  Disabled,
 }) => {
   return (
     <Btn
@@ -37,6 +44,7 @@ const Button = ({
       backgroundcolor={backgroundColor}
       color={Color}
       onClick={ClickFunc}
+      disabled={Disabled}
     >
       {Content}
     </Btn>
@@ -50,6 +58,7 @@ Button.propTypes = {
   backgroundColor: PropTypes.string,
   Color: PropTypes.string,
   ClickFunc: PropTypes.func.isRequired,
+  Disabled: PropTypes.bool,
 };
 
 Button.defaultProps = {
@@ -58,6 +67,7 @@ Button.defaultProps = {
   Content: 'None',
   backgroundColor: '#ffffff',
   Color: Colors.main,
+  Disabled: false,
 };
 
 export default Button;

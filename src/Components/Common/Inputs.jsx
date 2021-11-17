@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -36,16 +37,22 @@ const Inputs = ({
   inputHeight,
   inputContent,
   inputPlaceholder,
+  inputChange,
+  inputName,
+  inputValue,
 }) => {
   return (
     <>
       <Container>
         <InputName>{inputContent}</InputName>
         <Input
+          name={inputName}
           type={inputType}
           width={inputWidth}
           height={inputHeight}
           placeholder={inputPlaceholder}
+          onChange={inputChange}
+          value={inputValue}
         />
       </Container>
     </>
@@ -53,11 +60,14 @@ const Inputs = ({
 };
 
 Inputs.propTypes = {
+  inputName: PropTypes.string.isRequired,
   inputType: PropTypes.string,
   inputWidth: PropTypes.string,
   inputHeight: PropTypes.string,
   inputContent: PropTypes.string,
   inputPlaceholder: PropTypes.string,
+  inputChange: PropTypes.func.isRequired,
+  inputValue: PropTypes.any,
 };
 
 Inputs.defaultProps = {
@@ -66,6 +76,7 @@ Inputs.defaultProps = {
   inputHeight: '45px',
   inputContent: 'None',
   inputPlaceholder: 'None',
+  inputValue: '',
 };
 
 export default Inputs;
@@ -91,11 +102,23 @@ const InputText = styled.span`
   width: 30px;
 `;
 // n차 체크하는 input
-export const InputNum = ({ inputContent }) => {
+export const InputNum = ({
+  inputContent,
+  inputChange,
+  inputName,
+  inputValue,
+}) => {
   return (
     <Container>
       <InputName>{inputContent}</InputName>
-      <InputNumber type="number" min="0" max="2" />
+      <InputNumber
+        onChange={inputChange}
+        name={inputName}
+        value={inputValue}
+        type="number"
+        min="0"
+        max="2"
+      />
       <InputText>차</InputText>
     </Container>
   );
@@ -103,10 +126,14 @@ export const InputNum = ({ inputContent }) => {
 
 InputNum.propTypes = {
   inputContent: PropTypes.string,
+  inputChange: PropTypes.func.isRequired,
+  inputName: PropTypes.string.isRequired,
+  inputValue: PropTypes.any,
 };
 
 InputNum.defaultProps = {
   inputContent: 'None',
+  inputValue: 0,
 };
 
 const InputLogin = styled.input`
@@ -132,6 +159,9 @@ export const LoginInput = ({
   inputWidth,
   inputHeight,
   inputPlaceholder,
+  inputChange,
+  inputName,
+  inputValue,
 }) => {
   return (
     <InputLogin
@@ -139,6 +169,9 @@ export const LoginInput = ({
       width={inputWidth}
       height={inputHeight}
       placeholder={inputPlaceholder}
+      onChange={inputChange}
+      name={inputName}
+      value={inputValue}
     />
   );
 };
@@ -148,6 +181,9 @@ LoginInput.propTypes = {
   inputWidth: PropTypes.string,
   inputHeight: PropTypes.string,
   inputPlaceholder: PropTypes.string,
+  inputChange: PropTypes.string.isRequired,
+  inputName: PropTypes.string.isRequired,
+  inputValue: PropTypes.any,
 };
 
 LoginInput.defaultProps = {
@@ -155,4 +191,5 @@ LoginInput.defaultProps = {
   inputWidth: '100%',
   inputHeight: '45px',
   inputPlaceholder: 'None',
+  inputValue: '',
 };
