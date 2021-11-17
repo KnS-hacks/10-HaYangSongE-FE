@@ -57,7 +57,7 @@ function Sidebar() {
           <Home />
         </IconWrapper>
         <IconWrapper>
-          <Search />
+          <Search width="55" height="55" />
         </IconWrapper>
         <IconWrapper>
           <MyReservation />
