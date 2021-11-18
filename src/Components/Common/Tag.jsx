@@ -9,8 +9,8 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100px;
-  height: 40px;
+  width: 80px;
+  height: 35px;
   padding: 2px;
   box-sizing: border-box;
   background-color: ${props => props.bgColor};
@@ -41,7 +41,7 @@ const Tag = ({ step }) => {
   return (
     <Container bgColor={bgColor}>
       <Syringe />
-      {step ? <Text>{step}차</Text> : <Text size="0.8rem">상관없음</Text>}
+      {step ? <Text>{step}차</Text> : <Text size="0.6rem">상관없음</Text>}
     </Container>
   );
 };

@@ -6,7 +6,6 @@ import { useHistory } from 'react-router-dom';
 import Colors from '../../Assets/Colors/Colors';
 
 const Wrapper = styled.div`
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;

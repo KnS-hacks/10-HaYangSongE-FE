@@ -1,27 +1,24 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { restaurantList } from '../../api/Restaurant';
-import SearchContent from '../../Components/Search/SearchContent';
+import Content1 from '../../Components/Main/Content1';
 
-const Search = () => {
-  const [ResList, setResList] = useState([]);
+const District1 = () => {
+  const [Dis1List, setDis1List] = useState([]);
   const fetch = async () => {
     try {
       const list = await restaurantList();
-      setResList(list.data);
+      const filteredList = list.data.filter(item => item.district === 'SE');
+      setDis1List(filteredList);
     } catch (error) {
       return error;
     }
-    return ResList;
+    return Dis1List;
   };
   useEffect(() => {
     fetch();
   }, []);
-  return (
-    <>
-      <SearchContent listData={ResList} />
-    </>
-  );
+  return <Content1 listData={Dis1List} />;
 };
 
-export default Search;
+export default District1;

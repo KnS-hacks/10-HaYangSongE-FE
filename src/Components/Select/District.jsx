@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import { ReactComponent as People } from '../../Assets/Icons/People.svg';
 
 const Container = styled.div`
@@ -31,9 +32,13 @@ const Percent = styled.p`
   }
 `;
 
-const District = ({ districtName, percent }) => {
+const District = ({ districtName, percent, Url }) => {
+  const history = useHistory();
+  const chooseDistrict = () => {
+    history.push(`${Url}`);
+  };
   return (
-    <Container>
+    <Container onClick={chooseDistrict}>
       <DistrictName>{districtName}</DistrictName>
       <Percent>
         <People />
@@ -46,6 +51,7 @@ const District = ({ districtName, percent }) => {
 District.propTypes = {
   districtName: PropTypes.string.isRequired,
   percent: PropTypes.number.isRequired,
+  Url: PropTypes.string.isRequired,
 };
 
 export default District;

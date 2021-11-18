@@ -30,11 +30,11 @@ const Address = styled.p`
   line-height: 40px;
 `;
 
-const Title = ({ restaurantName, waiting, address, step }) => {
+const Title = ({ restaurant, address, waiting, step }) => {
   return (
     <Container>
       <Restaurant>
-        <span>{restaurantName}</span>
+        <span>{restaurant}</span>
         <span>
           <WaitingNum>{waiting}</WaitingNum>팀 대기 중
         </span>
@@ -46,7 +46,7 @@ const Title = ({ restaurantName, waiting, address, step }) => {
 };
 
 Title.propTypes = {
-  restaurantName: PropTypes.string.isRequired,
+  restaurant: PropTypes.string.isRequired,
   address: PropTypes.string.isRequired,
   waiting: PropTypes.number.isRequired,
   step: PropTypes.number.isRequired,

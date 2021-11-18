@@ -8,11 +8,11 @@ import { ReactComponent as Profile } from '../../Assets/Icons/Profile.svg';
 // import Colors from "../../Assets/Colors/Colors";
 
 const Bar = styled.div`
+  position: fixed;
+  left: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: fixed;
-  left: 0;
   width: 100px;
   height: 100vh;
   padding: 20px;
@@ -20,7 +20,7 @@ const Bar = styled.div`
 `;
 
 const LogoDiv = styled.div`
-  height: 10%;
+  height: 12%;
   &:hover {
     cursor: pointer;
     transition: 0.3s;
@@ -32,7 +32,6 @@ const TopIcon = styled.div`
 `;
 
 const IconWrapper = styled.div`
-  box-sizing: border-box;
   padding: 20px;
   &:hover {
     cursor: pointer;
@@ -57,7 +56,7 @@ function Sidebar() {
           <Home />
         </IconWrapper>
         <IconWrapper>
-          <Search width="55" height="55" />
+          <Search width="50" height="50" />
         </IconWrapper>
         <IconWrapper>
           <MyReservation />

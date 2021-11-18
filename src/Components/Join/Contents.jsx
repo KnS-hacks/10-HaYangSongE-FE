@@ -47,7 +47,7 @@ const Contents = () => {
   // join 로직 후 login으로 이동
   const join = () => {
     console.log({ inputs });
-    history.push('/login');
+    history.push('/');
   };
   return (
     <Container>

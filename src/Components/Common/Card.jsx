@@ -1,12 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Button from './Button';
-
-// 전체 카드바
-const CardBar = styled.section`
+import Tag from './Tag';
+import TestRestaurant from '../../Assets/Images/TestRestaurant.jpg';
+import StyledLink from './StyledLink';
+// 전체 카드바 (x) Box
+const CardBox = styled.div`
   display: flex;
-  width: 500px;
+  justify-content: space-between;
+  width: 520px;
   height: 200px;
+  padding-bottom: 50px;
 `;
 
 // 맛있는 음식 사진
@@ -17,44 +22,51 @@ const FoodImg = styled.img`
 
 // 가게 간략한 정보
 const StoreContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 300px;
-  height: 200px;
+  height: 100%;
 `;
 
-// 가게 이름
-const StoreTitle = styled.p`
-  padding: 10px;
-  font-size: 1.5rem;
-  font-weight: 700;
+const Info = styled.div`
+  height: 75%;
+  // 가게 이름
+  & > p:nth-child(1) {
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 45px;
+  }
+  // 가게 주소
+  & > p:nth-child(2) {
+    font-size: 1rem;
+    padding-bottom: 10px;
+  }
 `;
 
-// 가게 주소
-const StoreAddress = styled.p`
-  padding: 10px;
-`;
-
-// 백신 태그
-const VacTag = styled.div`
-  width: 100%;
-  height: 30px;
-  padding-bottom: 40px;
-`;
-
-function Card() {
+function Card({ title, address, step, resId }) {
   return (
-    <CardBar>
-      <FoodImg />
+    <CardBox>
+      <FoodImg src={TestRestaurant} />
       <StoreContent>
-        <StoreTitle>맥도날드 천안두정 DT점</StoreTitle>
-        <StoreAddress>충남 천안시 서북구 동서대로 49</StoreAddress>
-        <VacTag>1차</VacTag>
-        <Button Content="대기 등록" position="fixed" bottom="0" />
+        <Info>
+          <p>{title}</p>
+          <p>{address}</p>
+          <Tag step={step} />
+        </Info>
+        <StyledLink Url={`detail/${resId}`}>
+          <Button Content="대기 등록" Height="50px" width="100%" />
+        </StyledLink>
       </StoreContent>
-    </CardBar>
+    </CardBox>
   );
 }
+
+Card.propTypes = {
+  title: PropTypes.string.isRequired,
+  address: PropTypes.string.isRequired,
+  step: PropTypes.number,
+  resId: PropTypes.number.isRequired,
+};
+
+Card.defaultProps = {
+  step: 0,
+};
 
 export default Card;

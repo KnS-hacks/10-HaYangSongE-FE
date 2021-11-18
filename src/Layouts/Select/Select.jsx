@@ -35,12 +35,12 @@ const Content = styled.div`
 const Select = () => {
   return (
     <Container>
-      <Title>지역을 선택해주세요. </Title>
+      <Title>지역을 선택해주세요.</Title>
       <Content>
         <Map width="400" height="400" />
         <div>
-          <District districtName="서북구" percent="58" />
-          <District districtName="동남구" percent="35" />
+          <District districtName="서북구" percent="58" Url="/district1" />
+          <District districtName="동남구" percent="35" Url="/district2" />
         </div>
       </Content>
     </Container>
