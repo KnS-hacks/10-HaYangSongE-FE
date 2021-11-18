@@ -9,6 +9,7 @@ import Modal from '../Common/Modal';
 const BtnDiv = styled.div`
   /* width: 100%; */
   button {
+    margin-left: 10px;
     margin-bottom: 20px;
     position: fixed;
     bottom: 0;
@@ -40,7 +41,7 @@ const Content = ({ restaurantName, waiting, address, step }) => {
       </Container>
       <BtnDiv onClick={toggleModal}>
         <Button
-          Width="90%"
+          Width="80%"
           Height="80px"
           Content="바로 줄서기"
           backgroundColor={Colors.main}

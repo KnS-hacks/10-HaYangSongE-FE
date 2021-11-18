@@ -6,19 +6,19 @@ import Colors from '../../Assets/Colors/Colors';
 const Bar = styled.header`
   position: fixed;
   left: 150px;
+  z-index: 3;
   top: 0;
-  width: auto; // 사이드바 하고 나머지로 되고싶다,,
+  /* width: 100vw; */
   height: 80px;
   font-size: 1.5rem;
-  padding: 20px;
 `;
 
 // 헤더 안 아이템
 const ContentDiv = styled.div`
   display: flex;
   align-items: center;
-  // justify-content: space-around;
   padding: 20px;
+  font-weight: 400;
 `;
 
 // 아이템 내용
