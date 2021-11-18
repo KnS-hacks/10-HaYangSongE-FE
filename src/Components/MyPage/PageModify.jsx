@@ -47,7 +47,20 @@ const Container = styled.div`
 `;
 
 // eslint-disable-next-line react/prop-types
-const Contents = ({ userName, userID, userNumber, userTag, userDate }) => {
+const Contents = ({ userName, userID, userNumber, userStep, userDate }) => {
+  const changeID = e => {
+    console.log(e.target.value);
+  };
+  const changeNum = e => {
+    console.log(e.target.value);
+  };
+  const changeStep = e => {
+    console.log(e.target.value);
+  };
+  const changeDate = e => {
+    console.log(e.target.value);
+  };
+
   return (
     <div>
       <Header>
@@ -63,21 +76,27 @@ const Contents = ({ userName, userID, userNumber, userTag, userDate }) => {
       <Wrapper>
         <Container>
           <p>아이디</p>
-          <input type="text" value={userID} />
+          <input type="text" placeholder={userID} onChange={changeID} />
         </Container>
         <Container>
           <p>휴대폰번호</p>
-          <input type="text" value={userNumber} />
+          <input type="text" placeholder={userNumber} onChange={changeNum} />
         </Container>
       </Wrapper>
       <Wrapper>
         <Container>
           <p>백신접종여부</p>
-          <input type="number" value={userTag} min="0" max="2" />
+          <input
+            type="number"
+            placeholder={userStep}
+            min="0"
+            max="2"
+            onChange={changeStep}
+          />
         </Container>
         <Container>
           <p>마지막 접종일</p>
-          <input type="date" value={userDate} />
+          <input type="date" placeholder={userDate} onChange={changeDate} />
         </Container>
       </Wrapper>
     </div>
@@ -89,7 +108,10 @@ Contents.PropTypes = {
   userName: PropTypes.string,
   userID: PropTypes.string,
   userNumber: PropTypes.string,
+  userTag: PropTypes.number,
   userDate: PropTypes.string,
 };
+
+Contents.defaultProps = {};
 
 export default Contents;

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import Tag from '../Common/Tag';
 import Button from '../Common/Button';
 
 // 안녕하세요 ㅇㅇ님이랑 버튼 묶는 헤더
@@ -50,7 +51,7 @@ const Container = styled.div`
 
 // 각각 하양송이, 아이디값, 핸드폰번호값, 날짜 받아오기 => 태그는...
 // eslint-disable-next-line react/prop-types
-const Contents = ({ userName, userID, userNumber, userDate }) => {
+const Contents = ({ userName, userID, userNumber, userStep, userDate }) => {
   return (
     <div>
       <Header>
@@ -70,7 +71,9 @@ const Contents = ({ userName, userID, userNumber, userDate }) => {
       <Wrapper>
         <Container>
           <p>백신접종여부</p>
-          <span>태그</span>
+          <span>
+            <Tag step={userStep} />
+          </span>
         </Container>
         <Container>
           <p>마지막 접종일</p>
@@ -86,6 +89,7 @@ Contents.PropTypes = {
   userName: PropTypes.string,
   userID: PropTypes.string,
   userNumber: PropTypes.string,
+  userStep: PropTypes.number,
   userDate: PropTypes.string,
 };
 
