@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
@@ -8,6 +9,7 @@ import Colors from '../../Assets/Colors/Colors';
 import { LoginInput } from '../Common/Inputs';
 import Button from '../Common/Button';
 import StyledLink from '../Common/StyledLink';
+import { userLogin } from '../../api/User';
 
 const Container = styled.div`
   display: flex;
@@ -61,8 +63,26 @@ const Contents = () => {
       [e.target.name]: e.target.value,
     });
   };
+
+  const fetch = async () => {
+    // 파라미터 정의
+    const values = {
+      username: inputs.username,
+      password: inputs.password,
+    };
+    try {
+      console.log(values);
+      // api 통신
+      await userLogin(values);
+    } catch (error) {
+      return error;
+    }
+  };
+
   const login = () => {
-    history.push('/select');
+    fetch();
+    console.log(fetch());
+    history.push('/');
   };
   return (
     <Container>
@@ -73,18 +93,18 @@ const Contents = () => {
             <Id width="30" height="30" />
             <LoginInput
               inputChange={handleInputs}
-              inputName="userId"
+              inputName="username"
               inputPlaceholder="아이디를 입력해주세요."
-              inputValue={inputs.userId}
+              inputValue={inputs.username}
             />
           </InputDiv>
           <InputDiv>
             <Key width="30" height="30" />
             <LoginInput
               inputChange={handleInputs}
-              inputName="pw"
+              inputName="password"
               inputType="password"
-              inputValue={inputs.pw}
+              inputValue={inputs.password}
               inputPlaceholder="비밀번호를 입력해주세요."
             />
           </InputDiv>

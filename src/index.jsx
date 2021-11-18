@@ -2,9 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { RecoilRoot } from 'recoil';
+import axios from 'axios';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+axios.defaults.xsrfCookieName = 'csrftoken';
+axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
 ReactDOM.render(
   <React.StrictMode>
     <RecoilRoot>
