@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 import api from './api';
 
+// 전체 식당 list 조회
 export const restaurantList = async param => {
   const res = await api({
     url: '/account/restaurant',
@@ -10,12 +11,11 @@ export const restaurantList = async param => {
   return res;
 };
 
+// 식당 detail 조회
 export const restaurantDetail = async param => {
-  console.log(param);
   const res = await api({
     url: `/account/restaurant/${param}`,
     type: 'get',
   });
-  console.log(res);
   return res;
 };

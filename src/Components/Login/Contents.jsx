@@ -62,7 +62,6 @@ const Contents = () => {
     });
   };
   const login = () => {
-    console.log(inputs);
     history.push('/select');
   };
   return (
