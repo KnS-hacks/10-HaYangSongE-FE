@@ -128,12 +128,11 @@ InputNum.propTypes = {
   inputContent: PropTypes.string,
   inputChange: PropTypes.func.isRequired,
   inputName: PropTypes.string.isRequired,
-  inputValue: PropTypes.any,
+  inputValue: PropTypes.number.isRequired,
 };
 
 InputNum.defaultProps = {
   inputContent: 'None',
-  inputValue: 0,
 };
 
 const InputLogin = styled.input`

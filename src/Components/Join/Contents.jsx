@@ -1,4 +1,5 @@
-/* eslint-disable no-undef */
+/* eslint-disable consistent-return */
+/* eslint-disable no-alert */
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
@@ -48,19 +49,32 @@ const Contents = () => {
   };
 
   const fetch = async () => {
+    // 파라미터 정의
+    const values = {
+      username: inputs.username,
+      full_name: inputs.full_name,
+      vaccine_step: Number(inputs.vaccine_step),
+      vaccine_date: inputs.vaccine_date,
+      phone_number: inputs.phone_number,
+      password: inputs.password,
+    };
     try {
-      const response = await userJoin(inputs);
-      console.log(response);
+      // api 통신
+      await userJoin(values);
     } catch (error) {
       return error;
     }
-    return response;
   };
 
   // join 로직 후 login으로 이동
   const join = () => {
-    fetch();
-    history.push('/join');
+    // 비밀번호가 동일한 경우에만 회원가입
+    if (inputs.password === inputs.password2) {
+      fetch();
+      history.push('/');
+    } else {
+      alert('비밀번호가 동일하지 않습니다. 비밀번호를 동일하게 맞춰주세요.');
+    }
   };
   return (
     <Container>
