@@ -8,8 +8,9 @@ import Button from '../../Common/Button';
 import Colors from '../../../Assets/Colors/Colors';
 import {
   friendsState,
-  reservationState,
+  orderState,
   restaurantState,
+  waitingState,
 } from '../../../Recoil/Reservation';
 import { UserData } from '../../../Recoil/User';
 import { waitingCreate } from '../../../api/Restaurant';
@@ -83,7 +84,6 @@ const Person = styled.span`
 const Step2 = ({ restaurantName, increasePageFunc, decreasePageFunc }) => {
   const history = useHistory();
   const [Today, setToday] = useState('');
-  const [waitingRes, setwaitingRes] = useState();
   // 현재 날짜 가져오는 함수
   const createDate = () => {
     const today = new Date();
@@ -98,7 +98,8 @@ const Step2 = ({ restaurantName, increasePageFunc, decreasePageFunc }) => {
   const resId = useRecoilValue(restaurantState);
 
   // recoil 에 예약 정보를 저장하기
-  const [MyReservation, setMyreservation] = useRecoilState(reservationState);
+  const [MyOrder, setMyOrder] = useRecoilState(orderState);
+  const [MyWaiting, setMyWaiting] = useRecoilState(waitingState);
   // waiting 제출 및 다음 단계 실행 함수
   // User의 예약 정보는 Recoil 에 저장하기.
   const fetch = async () => {
@@ -109,15 +110,19 @@ const Step2 = ({ restaurantName, increasePageFunc, decreasePageFunc }) => {
     };
     try {
       const res = await waitingCreate(values);
-      setwaitingRes(res);
-      setMyreservation(res.data);
+      console.log(res);
+      console.log(res.data.order);
       // 등록 되면 다음페이지로 이동
+      setMyOrder(res.data.order);
+      setMyWaiting(res.data.time);
       increasePageFunc();
+      if (res.data.success === false) {
+        alert('식당에서 요구하는 백신 접종 차수에 미달합니다.');
+        alert('예약을 종료하고 홈 화면으로 돌아갑니다.');
+        history.push('/district1');
+      }
     } catch (error) {
-      setMyreservation({});
-      alert('식당에서 요구하는 백신 접종 차수에 미달합니다.');
-      alert('예약을 종료하고 홈 화면으로 돌아갑니다.');
-      history.push('/district1');
+      console.log(error.response);
     }
   };
   const submitWaiting = () => {

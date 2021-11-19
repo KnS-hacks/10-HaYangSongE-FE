@@ -10,7 +10,7 @@ import { userModify } from '../../api/Modify';
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 1550px;
+  width: 90%;
   text-align: center;
   height: 50px;
   padding: 20px;
@@ -33,7 +33,7 @@ const Wrapper = styled.div`
 
 // 회원정보 아이템 하나 p는 정보이름 input은 값(입력받기)
 const Container = styled.div`
-  width: 700px;
+  width: 500px;
   font-size: 1.2rem;
   padding: 0 100px 40px 0;
   span {
@@ -41,10 +41,11 @@ const Container = styled.div`
     padding-bottom: 20px;
   }
   input {
+    margin: 10px 0;
     padding: 10px;
     font-family: 'Pretendard Variable';
     font-size: inherit;
-    width: 700px;
+    width: 500px;
     height: 40px;
   }
 `;

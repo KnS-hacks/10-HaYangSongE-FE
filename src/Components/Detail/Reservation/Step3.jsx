@@ -1,6 +1,8 @@
 import React from 'react';
+import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import Colors from '../../../Assets/Colors/Colors';
+import { orderState, waitingState } from '../../../Recoil/Reservation';
 import Button from '../../Common/Button';
 import StyledLink from '../../Common/StyledLink';
 
@@ -50,6 +52,8 @@ const WaitingTime = styled.p`
 `;
 
 const Step3 = () => {
+  const myOrder = useRecoilValue(orderState);
+  const myWaiting = useRecoilValue(waitingState);
   return (
     <>
       <ModalTitleDiv>등록이 완료 되었습니다.</ModalTitleDiv>
@@ -57,13 +61,13 @@ const Step3 = () => {
         <Info>내 순서는</Info>
         <p>
           <span>
-            <WaitingNum>5</WaitingNum>번째
+            <WaitingNum>{myOrder}</WaitingNum>번째
           </span>
-          <WaitingTime>대기시간 약 15분</WaitingTime>
+          <WaitingTime>대기시간 약 {myWaiting}분</WaitingTime>
         </p>
       </Content>
       <ButtonDiv>
-        <StyledLink Url="/">
+        <StyledLink Url="/select1">
           <Button Content="홈으로 이동하기" />
         </StyledLink>
         <StyledLink Url="/">

@@ -42,7 +42,11 @@ const Detail = ({ match }) => {
           waiting={Restaurant.waitings}
           step={Restaurant.vaccine_condition}
         />
-        <Content menu={Restaurant.menu} match={match} />
+        <Content
+          restaurantName={Restaurant.name}
+          menu={Restaurant.menu}
+          match={match}
+        />
       </Container>
     </>
   );

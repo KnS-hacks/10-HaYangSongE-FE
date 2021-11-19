@@ -9,7 +9,7 @@ import Button from '../Common/Button';
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 1550px;
+  width: 90%;
   text-align: center;
   height: 50px;
   padding: 20px;
@@ -34,17 +34,18 @@ const Wrapper = styled.div`
 // 마이페이지 데이터 하나
 // span은 받아오는 데이터값
 const Container = styled.div`
-  width: 700px;
+  width: 500px;
   font-size: 1.2rem;
-  font-weight: 700;
   padding: 0 100px 80px 0;
   span:nth-child(1) {
+    font-weight: 700;
     padding-bottom: 20px;
   }
   span:nth-child(2) {
+    font-weight: 400;
     display: block;
     padding: 20px;
-    width: 700px;
+    width: 500px;
     height: 40px;
     line-height: 40px;
     box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
