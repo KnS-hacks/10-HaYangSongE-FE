@@ -12,7 +12,12 @@ export const restaurantState = atom({
   default: '',
 });
 
-export const reservationState = atom({
-  key: 'reservationState',
-  default: {},
+export const orderState = atom({
+  key: 'orderState',
+  default: 0,
+});
+
+export const waitingState = atom({
+  key: 'waitingState',
+  default: 0,
 });
