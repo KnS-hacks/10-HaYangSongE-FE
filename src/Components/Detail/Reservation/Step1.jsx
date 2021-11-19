@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
@@ -104,7 +105,8 @@ const Step1 = ({ increasePageFunc }) => {
 
   const chageList = e => {
     if (e.keyCode === 13 && people) {
-      setFriends([...Friends, people]);
+      setFriends([...Friends, { username: people }]);
+      console.log(Friends);
       setpeople('');
       e.target.value = '';
     }
@@ -124,7 +126,9 @@ const Step1 = ({ increasePageFunc }) => {
 
   // 삭제 로직
   const delItem = e => {
-    setFriends(Friends.filter(friend => friend !== e.target.innerHTML));
+    setFriends(
+      Friends.filter(friend => friend.username !== e.target.innerHTML),
+    );
   };
 
   return (
@@ -148,7 +152,7 @@ const Step1 = ({ increasePageFunc }) => {
           ) : (
             Friends.map(tag => (
               <Tag onClick={delItem}>
-                <span>{tag}</span>
+                <span>{tag.username}</span>
               </Tag>
             ))
           )}

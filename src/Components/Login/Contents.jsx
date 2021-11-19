@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import { useRecoilState } from 'recoil';
 import { ReactComponent as Logo } from '../../Assets/Icons/Logo.svg';
 import { ReactComponent as Key } from '../../Assets/Icons/Key.svg';
 import { ReactComponent as Id } from '../../Assets/Icons/Id.svg';
@@ -10,6 +11,7 @@ import { LoginInput } from '../Common/Inputs';
 import Button from '../Common/Button';
 import StyledLink from '../Common/StyledLink';
 import { userLogin } from '../../api/User';
+import { UserData } from '../../Recoil/User';
 
 const Container = styled.div`
   display: flex;
@@ -53,7 +55,7 @@ const JoinInfo = styled.p`
 
 const Contents = () => {
   const history = useHistory();
-
+  const [User, setUser] = useRecoilState(UserData);
   // input 관련 로직
   const [inputs, setinputs] = useState({});
 
@@ -71,9 +73,15 @@ const Contents = () => {
       password: inputs.password,
     };
     try {
-      console.log(values);
       // api 통신
-      await userLogin(values);
+      const userData = await userLogin(values);
+      if (userData) {
+        setUser(userData.data);
+        console.log(User);
+        history.push('/select');
+      } else {
+        alert('로그인에 실패했습니다. 다시 로그인해주세요.');
+      }
     } catch (error) {
       return error;
     }
@@ -81,8 +89,6 @@ const Contents = () => {
 
   const login = () => {
     fetch();
-    console.log(fetch());
-    history.push('/');
   };
   return (
     <Container>

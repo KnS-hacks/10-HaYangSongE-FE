@@ -63,19 +63,16 @@ const SearchContent = ({ listData }) => {
 
   const searchOutput = () => {
     // 아무것도 입력이 안 된 경우 전체를 출력
-    if (searchText === '') {
-      setresultList(listData);
-    }
     const filteredList = listData.filter(
       item => item.name.indexOf(searchText) > -1,
     );
     setresultList(filteredList);
   };
 
-  // 입력값이 바뀔 때마다 필터링
   useEffect(() => {
+    setresultList(listData);
     searchOutput();
-  }, [searchText]);
+  });
 
   return (
     <Container>
