@@ -42,6 +42,7 @@ const Container = styled.div`
     font-family: 'Pretendard Variable';
     font-size: inherit;
     width: 300px;
+    height: 40px;
     line-height: 40px;
   }
 `;

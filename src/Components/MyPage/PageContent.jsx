@@ -44,6 +44,7 @@ const Container = styled.div`
   span {
     padding: 10px;
     width: 300px;
+    height: 40px;
     line-height: 40px;
     box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
   }
