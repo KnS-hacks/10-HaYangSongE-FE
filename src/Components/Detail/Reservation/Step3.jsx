@@ -67,10 +67,10 @@ const Step3 = () => {
         </p>
       </Content>
       <ButtonDiv>
-        <StyledLink Url="/select1">
+        <StyledLink Url="/district1">
           <Button Content="홈으로 이동하기" />
         </StyledLink>
-        <StyledLink Url="/">
+        <StyledLink Url="/reservation">
           <Button
             Content="예약확인 페이지로 이동하기"
             backgroundColor={Colors.main}

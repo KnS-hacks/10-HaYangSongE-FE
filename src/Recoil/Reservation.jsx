@@ -21,3 +21,8 @@ export const waitingState = atom({
   key: 'waitingState',
   default: 0,
 });
+
+export const myRestaurantName = atom({
+  key: 'restaurantName',
+  default: '',
+});

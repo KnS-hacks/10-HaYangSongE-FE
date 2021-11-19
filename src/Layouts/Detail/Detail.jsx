@@ -24,7 +24,7 @@ const Detail = ({ match }) => {
       const restaurant = await restaurantDetail(resId);
       setRestaurant(restaurant.data);
       setResId(match.params.resId);
-      console.log(ResId);
+      console.log(restaurant.data.waitings);
     } catch (error) {
       return error;
     }
