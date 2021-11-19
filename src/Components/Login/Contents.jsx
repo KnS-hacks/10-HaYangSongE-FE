@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable consistent-return */
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
@@ -10,8 +11,8 @@ import Colors from '../../Assets/Colors/Colors';
 import { LoginInput } from '../Common/Inputs';
 import Button from '../Common/Button';
 import StyledLink from '../Common/StyledLink';
-import { userLogin } from '../../api/User';
-import { UserData } from '../../Recoil/User';
+import { userInfoAPI, userLogin } from '../../api/User';
+import { UserData, UserInfo } from '../../Recoil/User';
 
 const Container = styled.div`
   display: flex;
@@ -55,7 +56,10 @@ const JoinInfo = styled.p`
 
 const Contents = () => {
   const history = useHistory();
+  // 로그인 정보 저장
   const [User, setUser] = useRecoilState(UserData);
+  // 유저 정보 저장
+  const [UserProfile, setUserProfile] = useRecoilState(UserInfo);
   // input 관련 로직
   const [inputs, setinputs] = useState({});
 
@@ -77,7 +81,8 @@ const Contents = () => {
       const userData = await userLogin(values);
       if (userData) {
         setUser(userData.data);
-        console.log(User);
+        const info = await userInfoAPI(User.username);
+        setUserProfile(info.data);
         history.push('/select');
       } else {
         alert('로그인에 실패했습니다. 다시 로그인해주세요.');
