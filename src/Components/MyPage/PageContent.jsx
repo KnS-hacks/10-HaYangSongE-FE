@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Tag from '../Common/Tag';
@@ -53,11 +54,20 @@ const Container = styled.div`
 // 각각 하양송이, 아이디값, 핸드폰번호값, 날짜 받아오기 => 태그는...
 // eslint-disable-next-line react/prop-types
 const Contents = ({ userName, userID, userNumber, userStep, userDate }) => {
+  const history = useHistory();
+  const routeChange = () => {
+    history.push('./modifypage');
+  };
   return (
     <div>
       <Header>
         <Info>안녕하세요, {userName} 님</Info>
-        <Button Content="내 정보 수정하기" width="100%" Height="50px" />
+        <Button
+          Content="내 정보 수정하기"
+          width="100%"
+          Height="50px"
+          ClickFunc={routeChange}
+        />
       </Header>
       <Wrapper>
         <Container>

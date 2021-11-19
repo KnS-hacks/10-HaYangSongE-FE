@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Button from '../Common/Button';
 import Colors from '../../Assets/Colors/Colors';
+import { userModify } from '../../api/Modify';
 
 // 안녕하세요 ㅇㅇ님이랑 버튼 묶는 헤더
 const Header = styled.div`
@@ -49,12 +51,40 @@ const Container = styled.div`
 
 // eslint-disable-next-line react/prop-types
 const Contents = ({ userName, userID, userNumber, userStep, userDate }) => {
+  const history = useHistory();
   const [inputs, setinputs] = useState({});
+
   const handleInputs = e => {
     setinputs({
       ...inputs,
       [e.target.name]: e.target.value,
     });
+  };
+  // eslint-disable-next-line consistent-return
+  const fetch = async () => {
+    // 파라미터 정의
+    const values = {
+      username: inputs.username,
+      phone_number: inputs.password,
+      vaccine_step: inputs.vaccine_step,
+      vaccine_date: inputs.vaccine_date,
+    };
+    console.log(values);
+    try {
+      // api 통신
+      const modifyData = await userModify(values);
+      if (modifyData) {
+        history.push('/mypage');
+      } else {
+        alert('수정 실패!');
+      }
+    } catch (error) {
+      return error;
+    }
+  };
+
+  const modifyuser = () => {
+    fetch();
   };
   return (
     <div>
@@ -66,6 +96,7 @@ const Contents = ({ userName, userID, userNumber, userStep, userDate }) => {
           Height="50px"
           backgroundColor={Colors.main}
           Color="#ffffff"
+          ClickFunc={modifyuser}
         />
       </Header>
       <Wrapper>
