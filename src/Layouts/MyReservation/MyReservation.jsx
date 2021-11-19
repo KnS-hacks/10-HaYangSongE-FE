@@ -1,14 +1,25 @@
 import React from 'react';
+import { useRecoilValue } from 'recoil';
 import Contents from '../../Components/MyReservation/Contents';
+import {
+  friendsState,
+  myRestaurantName,
+  orderState,
+  waitingState,
+} from '../../Recoil/Reservation';
 
 const MyReservation = () => {
+  const myTime = useRecoilValue(waitingState);
+  const myOrder = useRecoilValue(orderState);
+  const myResName = useRecoilValue(myRestaurantName);
+  const myPeople = useRecoilValue(friendsState).length + 1;
   return (
     <>
       <Contents
-        remainTime={15}
-        order={5}
-        resName="맥도날드 두정 DT점"
-        peopleNum={4}
+        remainTime={myTime}
+        order={myOrder}
+        resName={myResName}
+        peopleNum={myPeople}
       />
     </>
   );

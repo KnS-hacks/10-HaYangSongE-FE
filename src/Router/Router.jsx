@@ -11,6 +11,7 @@ import MyPage from '../Pages/MyPage';
 import ModifyPage from '../Pages/ModifyPage';
 import District1Page from '../Pages/District1Page';
 import District2Page from '../Pages/District2Page';
+import Msg from '../Pages/Msg';
 
 const Routers = () => {
   return (
@@ -27,6 +28,7 @@ const Routers = () => {
         <Route path="/reservation" component={MyReservationPage} />
         <Route path="/mypage" component={MyPage} />
         <Route path="/modifypage" component={ModifyPage} />
+        <Route path="/msg" component={Msg} />
       </Switch>
     </BrowserRouter>
   );

@@ -8,6 +8,7 @@ import Button from '../../Common/Button';
 import Colors from '../../../Assets/Colors/Colors';
 import {
   friendsState,
+  myRestaurantName,
   orderState,
   restaurantState,
   waitingState,
@@ -100,6 +101,8 @@ const Step2 = ({ restaurantName, increasePageFunc, decreasePageFunc }) => {
   // recoil 에 예약 정보를 저장하기
   const [MyOrder, setMyOrder] = useRecoilState(orderState);
   const [MyWaiting, setMyWaiting] = useRecoilState(waitingState);
+  const [MyResName, setMyResName] = useRecoilState(myRestaurantName);
+
   // waiting 제출 및 다음 단계 실행 함수
   // User의 예약 정보는 Recoil 에 저장하기.
   const fetch = async () => {
@@ -115,6 +118,7 @@ const Step2 = ({ restaurantName, increasePageFunc, decreasePageFunc }) => {
       // 등록 되면 다음페이지로 이동
       setMyOrder(res.data.order);
       setMyWaiting(res.data.time);
+      setMyResName(restaurantName);
       increasePageFunc();
       if (res.data.success === false) {
         alert('식당에서 요구하는 백신 접종 차수에 미달합니다.');
