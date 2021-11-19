@@ -30,3 +30,13 @@ export const userInfoAPI = async param => {
   });
   return res;
 };
+
+// 수정
+export const userModify = async param => {
+  const res = await api({
+    url: '/modify/?format=json', // 수정 url 필요
+    type: 'patch',
+    param,
+  });
+  return res;
+};
