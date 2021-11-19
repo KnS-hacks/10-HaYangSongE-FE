@@ -21,3 +21,12 @@ export const userJoin = async param => {
   });
   return res;
 };
+
+export const userInfoAPI = async param => {
+  const res = await api({
+    url: `/account/guest/${param}/?format=json`,
+    type: 'get',
+    param,
+  });
+  return res;
+};

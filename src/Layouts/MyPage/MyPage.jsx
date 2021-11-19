@@ -1,11 +1,13 @@
 import React from 'react';
 import { useRecoilValue } from 'recoil';
 import Contents from '../../Components/MyPage/PageContent';
-import { UserData } from '../../Recoil/User';
+import { UserData, UserInfo } from '../../Recoil/User';
 
 const MyPage = () => {
   const user = useRecoilValue(UserData);
+  const profile = useRecoilValue(UserInfo);
   console.log(user);
+  console.log(profile);
   return (
     <Contents
       userName="하양송이"
