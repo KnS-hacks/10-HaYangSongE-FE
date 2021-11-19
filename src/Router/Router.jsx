@@ -8,6 +8,7 @@ import DetailPage from '../Pages/DetailPage';
 import SearchPage from '../Pages/SearchPage';
 import MyReservationPage from '../Pages/MyReservationPage';
 import MyPage from '../Pages/MyPage';
+import ModifyPage from '../Pages/ModifyPage';
 import District1Page from '../Pages/District1Page';
 import District2Page from '../Pages/District2Page';
 
@@ -25,6 +26,7 @@ const Routers = () => {
         <Route path="/search" component={SearchPage} />
         <Route path="/reservation" component={MyReservationPage} />
         <Route path="/mypage" component={MyPage} />
+        <Route path="/modifypage" component={ModifyPage} />
       </Switch>
     </BrowserRouter>
   );
