@@ -1,7 +1,7 @@
 import React from 'react';
 import Sidebar from '../../Components/Common/Sidebar2';
 import Headerbar from '../../Components/Common/Header2';
-import Contents from '../../Components/MyPage/PageContent';
+import Contents from '../../Components/MyPage/PageModify';
 
 const MyPage = () => {
   return (

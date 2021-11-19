@@ -6,9 +6,9 @@ import Button from '../Common/Button';
 
 // 안녕하세요 ㅇㅇ님이랑 버튼 묶는 헤더
 const Header = styled.div`
-  position: relative;
   display: flex;
   justify-content: space-between;
+  width: 1550px;
   text-align: center;
   height: 50px;
   padding: 20px;
@@ -22,28 +22,28 @@ const Info = styled.p`
   text-align: center;
 `;
 
-// 아이템 두개씩 묶기
+// 아이템 컨테이너 묶기
 const Wrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  width: 1600px;
   padding: 30px;
 `;
 
 // 마이페이지 데이터 하나
-// p는 마이페이지 아이디, 핸드폰번호, 백신접종여부, 마지막 접종일 타이틀
 // span은 받아오는 데이터값
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  width: 700px;
   font-size: 1.2rem;
-  padding-right: 30px;
-  p {
-    font-weight: 700;
+  font-weight: 700;
+  padding: 0 100px 80px 0;
+  span:nth-child(1) {
     padding-bottom: 20px;
   }
-  span {
-    padding: 10px;
-    width: 300px;
+  span:nth-child(2) {
+    display: block;
+    padding: 20px;
+    width: 700px;
     height: 40px;
     line-height: 40px;
     box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
@@ -61,23 +61,21 @@ const Contents = ({ userName, userID, userNumber, userStep, userDate }) => {
       </Header>
       <Wrapper>
         <Container>
-          <p>아이디</p>
+          <span>아이디</span>
           <span>{userID}</span>
         </Container>
         <Container>
-          <p>휴대폰번호</p>
+          <span>휴대폰번호</span>
           <span>{userNumber}</span>
         </Container>
-      </Wrapper>
-      <Wrapper>
         <Container>
-          <p>백신접종여부</p>
+          <span>백신접종여부</span>
           <span>
             <Tag step={userStep} />
           </span>
         </Container>
         <Container>
-          <p>마지막 접종일</p>
+          <span>마지막 접종일</span>
           <span>{userDate}</span>
         </Container>
       </Wrapper>

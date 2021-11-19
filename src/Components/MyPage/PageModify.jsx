@@ -6,9 +6,9 @@ import Colors from '../../Assets/Colors/Colors';
 
 // 안녕하세요 ㅇㅇ님이랑 버튼 묶는 헤더
 const Header = styled.div`
-  position: relative;
   display: flex;
   justify-content: space-between;
+  width: 1550px;
   text-align: center;
   height: 50px;
   padding: 20px;
@@ -21,29 +21,29 @@ const Info = styled.p`
   text-align: center;
 `;
 
-// 두개씩 묶기
+// 아이템 컨테이너 묶기
 const Wrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  width: 1600px;
   padding: 30px;
 `;
 
 // 회원정보 아이템 하나 p는 정보이름 input은 값(입력받기)
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  width: 700px;
   font-size: 1.2rem;
-  padding-right: 30px;
-  p {
+  padding: 0 100px 40px 0;
+  span {
     font-weight: 700;
     padding-bottom: 20px;
   }
   input {
+    padding: 10px;
     font-family: 'Pretendard Variable';
     font-size: inherit;
-    width: 300px;
+    width: 700px;
     height: 40px;
-    line-height: 40px;
   }
 `;
 
@@ -76,17 +76,17 @@ const Contents = ({ userName, userID, userNumber, userStep, userDate }) => {
       </Header>
       <Wrapper>
         <Container>
-          <p>아이디</p>
+          <span>아이디</span>
           <input type="text" placeholder={userID} onChange={changeID} />
         </Container>
         <Container>
-          <p>휴대폰번호</p>
+          <span>휴대폰번호</span>
           <input type="text" placeholder={userNumber} onChange={changeNum} />
         </Container>
       </Wrapper>
       <Wrapper>
         <Container>
-          <p>백신접종여부</p>
+          <span>백신접종여부</span>
           <input
             type="number"
             placeholder={userStep}
@@ -96,7 +96,7 @@ const Contents = ({ userName, userID, userNumber, userStep, userDate }) => {
           />
         </Container>
         <Container>
-          <p>마지막 접종일</p>
+          <span>마지막 접종일</span>
           <input type="date" placeholder={userDate} onChange={changeDate} />
         </Container>
       </Wrapper>
