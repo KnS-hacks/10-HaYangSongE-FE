@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Card from '../Common/Card';
+import { ReactComponent as Spoon } from '../../Assets/Icons/Spoon.svg';
 
 const CardDiv = styled.div`
   display: flex;
@@ -12,18 +13,32 @@ const CardDiv = styled.div`
   width: 80%;
 `;
 
+const Subtitle = styled.p`
+  display: flex;
+  align-items: center;
+  margin: 30px 0;
+  font-weight: 700;
+  font-size: 2rem;
+`;
+
 const Content2 = ({ listData }) => {
   return (
-    <CardDiv>
-      {listData.map(item => (
-        <Card
-          title={item.name}
-          address={item.branch_name}
-          step={item.vaccine_condition}
-          resId={item.id}
-        />
-      ))}
-    </CardDiv>
+    <>
+      <Subtitle>
+        <span>맛집</span>
+        <Spoon />
+      </Subtitle>
+      <CardDiv>
+        {listData.map(item => (
+          <Card
+            title={item.name}
+            address={item.branch_name}
+            step={item.vaccine_condition}
+            resId={item.id}
+          />
+        ))}
+      </CardDiv>
+    </>
   );
 };
 

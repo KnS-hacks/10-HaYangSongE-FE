@@ -36,7 +36,7 @@ const Title = ({ restaurant, address, waiting, step }) => {
       <Restaurant>
         <span>{restaurant}</span>
         <span>
-          <WaitingNum>{waiting}</WaitingNum>팀 대기 중
+          <WaitingNum>{waiting ? waiting.length : 0}</WaitingNum>팀 대기 중
         </span>
       </Restaurant>
       <Address>{address}</Address>

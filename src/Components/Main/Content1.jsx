@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Card from '../Common/Card';
+import { ReactComponent as Spoon } from '../../Assets/Icons/Spoon.svg';
 
 const CardDiv = styled.div`
   display: flex;
@@ -13,13 +14,20 @@ const CardDiv = styled.div`
 `;
 
 const Subtitle = styled.p`
+  display: flex;
+  align-items: center;
+  margin: 30px 0;
   font-weight: 700;
+  font-size: 2rem;
 `;
 
 const Content1 = ({ listData }) => {
   return (
     <>
-      <Subtitle>맛집</Subtitle>
+      <Subtitle>
+        <span>맛집</span>
+        <Spoon />
+      </Subtitle>
       <CardDiv>
         {listData.map(item => (
           <Card

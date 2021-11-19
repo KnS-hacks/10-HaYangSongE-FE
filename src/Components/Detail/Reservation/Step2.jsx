@@ -1,10 +1,18 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { useHistory } from 'react-router-dom';
 import Button from '../../Common/Button';
 import Colors from '../../../Assets/Colors/Colors';
-import { friendsState } from '../../../Recoil/Reservation';
+import {
+  friendsState,
+  reservationState,
+  restaurantState,
+} from '../../../Recoil/Reservation';
+import { UserData } from '../../../Recoil/User';
+import { waitingCreate } from '../../../api/Restaurant';
 
 const ModalTitleDiv = styled.div`
   font-weight: 700;
@@ -73,8 +81,9 @@ const Person = styled.span`
 `;
 
 const Step2 = ({ restaurantName, increasePageFunc, decreasePageFunc }) => {
+  const history = useHistory();
   const [Today, setToday] = useState('');
-
+  const [waitingRes, setwaitingRes] = useState();
   // 현재 날짜 가져오는 함수
   const createDate = () => {
     const today = new Date();
@@ -83,12 +92,37 @@ const Step2 = ({ restaurantName, increasePageFunc, decreasePageFunc }) => {
     const nowDate = today.getDate();
     setToday(`${nowYear}.${nowMonth}.${nowDate}`);
   };
+  // recoil 에서 저장한 배열, 현재 user, 현재 식당의 pk 가져오기
   const people = useRecoilValue(friendsState);
+  const user = useRecoilValue(UserData);
+  const resId = useRecoilValue(restaurantState);
+
+  // recoil 에 예약 정보를 저장하기
+  const [MyReservation, setMyreservation] = useRecoilState(reservationState);
   // waiting 제출 및 다음 단계 실행 함수
   // User의 예약 정보는 Recoil 에 저장하기.
+  const fetch = async () => {
+    const values = {
+      restaurant: Number(resId),
+      leader: user.username,
+      member: people,
+    };
+    try {
+      const res = await waitingCreate(values);
+      setwaitingRes(res);
+      setMyreservation(res.data);
+      // 등록 되면 다음페이지로 이동
+      increasePageFunc();
+    } catch (error) {
+      setMyreservation({});
+      alert('식당에서 요구하는 백신 접종 차수에 미달합니다.');
+      alert('예약을 종료하고 홈 화면으로 돌아갑니다.');
+      history.push('/district1');
+    }
+  };
   const submitWaiting = () => {
-    increasePageFunc();
-    // 이 뒤로 api 실행
+    // waiting 등록하기.
+    fetch();
   };
 
   useEffect(() => {
@@ -107,12 +141,12 @@ const Step2 = ({ restaurantName, increasePageFunc, decreasePageFunc }) => {
         </div>
         <div>
           <p>{Today}</p>
-          <p>하유민</p>
-          <p>{people.length} 명</p>
+          <p>{user.username}</p>
+          <p>{people.length + 1} 명</p>
           <PersonDiv>
             {people.map(person => (
               <Person>
-                {person}
+                {person.username}
                 <br />
               </Person>
             ))}

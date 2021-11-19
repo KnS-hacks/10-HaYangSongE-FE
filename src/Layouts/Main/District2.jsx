@@ -8,7 +8,7 @@ const District2 = () => {
   const fetch = async () => {
     try {
       const list = await restaurantList();
-      const filteredList = list.data.filter(item => item.district === 'DO');
+      const filteredList = list.data.filter(item => item.district === 'SE');
       setDis2List(filteredList);
     } catch (error) {
       return error;
