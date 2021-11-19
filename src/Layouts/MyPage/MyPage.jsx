@@ -10,11 +10,11 @@ const MyPage = () => {
   console.log(profile);
   return (
     <Contents
-      userName="하양송이"
-      userID="qlqlql"
-      userNumber="010-1234-5678"
-      userStep="1"
-      userDate="2021.11.29"
+      userName={profile.full_name}
+      userID={profile.userName}
+      userNumber={profile.phone_number}
+      userStep={profile.vaccine_step}
+      userDate={profile.vaccine_date}
     />
   );
 };
