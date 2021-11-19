@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Button from '../Common/Button';
@@ -49,19 +49,13 @@ const Container = styled.div`
 
 // eslint-disable-next-line react/prop-types
 const Contents = ({ userName, userID, userNumber, userStep, userDate }) => {
-  const changeID = e => {
-    console.log(e.target.value);
+  const [inputs, setinputs] = useState({});
+  const handleInputs = e => {
+    setinputs({
+      ...inputs,
+      [e.target.name]: e.target.value,
+    });
   };
-  const changeNum = e => {
-    console.log(e.target.value);
-  };
-  const changeStep = e => {
-    console.log(e.target.value);
-  };
-  const changeDate = e => {
-    console.log(e.target.value);
-  };
-
   return (
     <div>
       <Header>
@@ -77,11 +71,23 @@ const Contents = ({ userName, userID, userNumber, userStep, userDate }) => {
       <Wrapper>
         <Container>
           <span>아이디</span>
-          <input type="text" placeholder={userID} onChange={changeID} />
+          <input
+            type="text"
+            placeholder={userID}
+            onChange={handleInputs}
+            name="username"
+            value={inputs.username}
+          />
         </Container>
         <Container>
           <span>휴대폰번호</span>
-          <input type="text" placeholder={userNumber} onChange={changeNum} />
+          <input
+            type="text"
+            placeholder={userNumber}
+            onChange={handleInputs}
+            name="phone_number"
+            value={inputs.phone_number}
+          />
         </Container>
       </Wrapper>
       <Wrapper>
@@ -92,12 +98,20 @@ const Contents = ({ userName, userID, userNumber, userStep, userDate }) => {
             placeholder={userStep}
             min="0"
             max="2"
-            onChange={changeStep}
+            onChange={handleInputs}
+            name="vaccine_step"
+            value={inputs.vaccine_step}
           />
         </Container>
         <Container>
           <span>마지막 접종일</span>
-          <input type="date" placeholder={userDate} onChange={changeDate} />
+          <input
+            type="date"
+            placeholder={userDate}
+            onChange={handleInputs}
+            name="vaccine_date"
+            value={inputs.vaccine_date}
+          />
         </Container>
       </Wrapper>
     </div>
