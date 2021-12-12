@@ -35,6 +35,7 @@ const Content2 = ({ listData }) => {
             address={item.branch_name}
             step={item.vaccine_condition}
             resId={item.id}
+            pic={item.restaurant_photo}
           />
         ))}
       </CardDiv>

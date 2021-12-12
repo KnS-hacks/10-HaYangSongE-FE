@@ -31,9 +31,6 @@ const Address = styled.p`
 `;
 
 const Title = ({ restaurant, address, waiting, step }) => {
-  console.log(restaurant);
-  console.log(address);
-  console.log(waiting);
   return (
     <Container>
       <Restaurant>

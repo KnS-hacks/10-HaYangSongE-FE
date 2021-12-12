@@ -51,6 +51,7 @@ const WaitingTime = styled.p`
   /* font-weight: 400; */
 `;
 
+// recoil 말고 계정에서 myreservation 조회해서 가져오기.
 const Step3 = () => {
   const myOrder = useRecoilValue(orderState);
   const myWaiting = useRecoilValue(waitingState);

@@ -106,7 +106,6 @@ const Step1 = ({ increasePageFunc }) => {
   const chageList = e => {
     if (e.keyCode === 13 && people) {
       setFriends([...Friends, { username: people }]);
-      console.log(Friends);
       setpeople('');
       e.target.value = '';
     }

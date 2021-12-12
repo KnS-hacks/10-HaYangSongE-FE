@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable no-alert */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
@@ -113,8 +115,6 @@ const Step2 = ({ restaurantName, increasePageFunc, decreasePageFunc }) => {
     };
     try {
       const res = await waitingCreate(values);
-      console.log(res);
-      console.log(res.data.order);
       // 등록 되면 다음페이지로 이동
       setMyOrder(res.data.order);
       setMyWaiting(res.data.time);
@@ -126,7 +126,7 @@ const Step2 = ({ restaurantName, increasePageFunc, decreasePageFunc }) => {
         history.push('/district1');
       }
     } catch (error) {
-      console.log(error.response);
+      return error;
     }
   };
   const submitWaiting = () => {
