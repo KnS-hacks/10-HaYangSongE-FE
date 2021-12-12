@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { useRecoilValue } from 'recoil';
 import Contents from '../../Components/MyPage/PageContent';
@@ -6,8 +7,6 @@ import { UserData, UserInfo } from '../../Recoil/User';
 const MyPage = () => {
   const user = useRecoilValue(UserData);
   const profile = useRecoilValue(UserInfo);
-  console.log(user);
-  console.log(profile);
   return (
     <Contents
       userName={profile.full_name}
