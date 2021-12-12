@@ -5,7 +5,7 @@ import api from './api';
 // 전체 식당 list 조회
 export const restaurantList = async param => {
   const res = await api({
-    url: '/account/restaurant',
+    url: '/account/restaurant/',
     type: 'get',
   });
   return res;

@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
@@ -70,14 +71,13 @@ const Contents = ({ userName, userID, userNumber, userStep, userDate }) => {
       vaccine_step: inputs.vaccine_step,
       vaccine_date: inputs.vaccine_date,
     };
-    console.log(values);
     try {
       // api 통신
       const modifyData = await userModify(values);
       if (modifyData) {
         history.push('/mypage');
       } else {
-        alert('수정 실패!');
+        alert('수정 실패');
       }
     } catch (error) {
       return error;

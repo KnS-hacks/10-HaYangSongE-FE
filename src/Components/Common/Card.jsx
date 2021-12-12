@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Button from './Button';
 import Tag from './Tag';
-import TestRestaurant from '../../Assets/Images/TestRestaurant.jpg';
 import StyledLink from './StyledLink';
 // 전체 카드바 (x) Box
 const CardBox = styled.div`
@@ -40,10 +39,10 @@ const Info = styled.div`
   }
 `;
 
-function Card({ title, address, step, resId }) {
+function Card({ title, address, step, resId, pic }) {
   return (
     <CardBox>
-      <FoodImg src={TestRestaurant} />
+      <FoodImg src={pic} />
       <StoreContent>
         <Info>
           <p>{title}</p>
@@ -63,6 +62,7 @@ Card.propTypes = {
   address: PropTypes.string.isRequired,
   step: PropTypes.number,
   resId: PropTypes.number.isRequired,
+  pic: PropTypes.string.isRequired,
 };
 
 Card.defaultProps = {

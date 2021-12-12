@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/forbid-prop-types */
 import React, { useState } from 'react';
 import styled from 'styled-components';
@@ -28,7 +29,6 @@ const Content = ({ restaurantName, waiting, address, step, match }) => {
   const toggleModal = () => {
     setVisible(true);
     setResId(match.params.resId);
-    console.log(ResId);
   };
 
   const closeModal = () => {
