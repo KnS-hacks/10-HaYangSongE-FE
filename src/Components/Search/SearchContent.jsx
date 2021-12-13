@@ -62,17 +62,22 @@ const SearchContent = ({ listData }) => {
   };
 
   const searchOutput = () => {
-    // 아무것도 입력이 안 된 경우 전체를 출력
     const filteredList = listData.filter(
       item => item.name.indexOf(searchText) > -1,
     );
     setresultList(filteredList);
   };
 
+  // 마운트 될 때 searchText 가 없으면 전체 리스트를 불러오기
   useEffect(() => {
-    setresultList(listData);
+    if (searchText.length === 0) {
+      setresultList(listData);
+    }
+  }, []);
+
+  useEffect(() => {
     searchOutput();
-  });
+  }, [searchText]);
 
   return (
     <Container>

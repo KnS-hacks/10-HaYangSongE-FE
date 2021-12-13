@@ -51,7 +51,7 @@ const District = ({ districtName, percent, Url }) => {
 
 District.propTypes = {
   districtName: PropTypes.string.isRequired,
-  percent: PropTypes.number.isRequired,
+  percent: PropTypes.any.isRequired,
   Url: PropTypes.string.isRequired,
 };
 
