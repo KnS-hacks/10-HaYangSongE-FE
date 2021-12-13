@@ -84,6 +84,7 @@ const Contents = () => {
         setUser(userData.data);
         const info = await userInfoAPI(User.username);
         setUserProfile(info.data);
+        console.log(UserProfile);
         history.push('/select');
       } else {
         alert('로그인에 실패했습니다. 다시 로그인해주세요.');

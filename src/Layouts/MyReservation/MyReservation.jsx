@@ -8,6 +8,7 @@ import {
   waitingState,
 } from '../../Recoil/Reservation';
 
+// Would Fix :: Recoil (x) api애서 통신해서 가져오기
 const MyReservation = () => {
   const myTime = useRecoilValue(waitingState);
   const myOrder = useRecoilValue(orderState);
