@@ -180,7 +180,7 @@ LoginInput.propTypes = {
   inputWidth: PropTypes.string,
   inputHeight: PropTypes.string,
   inputPlaceholder: PropTypes.string,
-  inputChange: PropTypes.string.isRequired,
+  inputChange: PropTypes.any.isRequired,
   inputName: PropTypes.string.isRequired,
   inputValue: PropTypes.any,
 };

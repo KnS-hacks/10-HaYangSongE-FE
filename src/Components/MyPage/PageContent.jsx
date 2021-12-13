@@ -4,15 +4,13 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Tag from '../Common/Tag';
 import Button from '../Common/Button';
-
+// import Colors from '../../Assets/Colors/Colors';
 // 안녕하세요 ㅇㅇ님이랑 버튼 묶는 헤더
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
   width: 90%;
-  text-align: center;
-  height: 50px;
-  padding: 20px;
+  height: 80px;
 `;
 
 // 안녕하세요 ㅇㅇㅇ님
@@ -21,40 +19,35 @@ const Info = styled.p`
   font-size: 2rem;
   line-height: 45px;
   text-align: center;
+  min-width: 300px;
 `;
 
 // 아이템 컨테이너 묶기
 const Wrapper = styled.div`
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
-  width: 1600px;
-  padding: 30px;
+  width: 90%;
 `;
 
 // 마이페이지 데이터 하나
 // span은 받아오는 데이터값
 const Container = styled.div`
   width: 500px;
-  font-size: 1.2rem;
-  padding: 0 100px 80px 0;
+  font-size: 1.4rem;
   span:nth-child(1) {
     font-weight: 700;
-    padding-bottom: 20px;
   }
   span:nth-child(2) {
-    font-weight: 400;
     display: block;
-    padding: 20px;
-    width: 500px;
-    height: 40px;
-    line-height: 40px;
-    box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+    padding: 30px 0;
   }
 `;
 
 // 각각 하양송이, 아이디값, 핸드폰번호값, 날짜 받아오기 => 태그는...
 // eslint-disable-next-line react/prop-types
 const Contents = ({ userName, userID, userNumber, userStep, userDate }) => {
+  console.log(userName);
   const history = useHistory();
   const routeChange = () => {
     history.push('./modifypage');
@@ -96,11 +89,11 @@ const Contents = ({ userName, userID, userNumber, userStep, userDate }) => {
 
 // eslint-disable-next-line react/no-typos
 Contents.PropTypes = {
-  userName: PropTypes.string,
-  userID: PropTypes.string,
-  userNumber: PropTypes.string,
-  userStep: PropTypes.number,
-  userDate: PropTypes.string,
+  userName: PropTypes.string.isRequired,
+  userID: PropTypes.string.isRequired,
+  userNumber: PropTypes.string.isRequired,
+  userStep: PropTypes.number.isRequired,
+  userDate: PropTypes.string.isRequired,
 };
 
 export default Contents;

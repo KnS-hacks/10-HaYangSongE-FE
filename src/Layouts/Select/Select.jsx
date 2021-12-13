@@ -51,7 +51,7 @@ const Select = () => {
   };
   useEffect(() => {
     fetch();
-  });
+  }, [List]);
   return (
     <Container>
       <Title>지역을 선택해주세요.</Title>
