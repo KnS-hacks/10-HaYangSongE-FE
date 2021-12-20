@@ -31,6 +31,7 @@ const Content1 = ({ listData }) => {
       <CardDiv>
         {listData.map(item => (
           <Card
+            key={item.id}
             title={item.name}
             address={item.branch_name}
             step={item.vaccine_condition}

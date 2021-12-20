@@ -51,8 +51,12 @@ const District = ({ districtName, percent, Url }) => {
 
 District.propTypes = {
   districtName: PropTypes.string.isRequired,
-  percent: PropTypes.any.isRequired,
+  percent: PropTypes.any,
   Url: PropTypes.string.isRequired,
+};
+
+District.defaultProps = {
+  percent: '',
 };
 
 export default District;

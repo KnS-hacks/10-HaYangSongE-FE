@@ -71,11 +71,18 @@ const Content = ({ restaurantName, waiting, address, step, match }) => {
 };
 
 Content.propTypes = {
-  restaurantName: PropTypes.string.isRequired,
-  address: PropTypes.string.isRequired,
-  waiting: PropTypes.number.isRequired,
-  step: PropTypes.number.isRequired,
+  restaurantName: PropTypes.string,
+  address: PropTypes.string,
+  waiting: PropTypes.number,
+  step: PropTypes.number,
   match: PropTypes.any.isRequired,
+};
+
+Content.defaultProps = {
+  restaurantName: '',
+  address: '',
+  waiting: 0,
+  step: 0,
 };
 
 export default Content;

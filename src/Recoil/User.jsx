@@ -2,7 +2,10 @@
 import { atom } from 'recoil';
 import { recoilPersist } from 'recoil-persist';
 
-const { persistAtom } = recoilPersist();
+const { persistAtom } = recoilPersist({
+  key: 'user',
+  storage: sessionStorage,
+});
 
 // 로그인 결과
 export const UserData = atom({

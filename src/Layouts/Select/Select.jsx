@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable consistent-return */
 import React, { useEffect, useState } from 'react';
@@ -43,15 +44,15 @@ const Select = () => {
     try {
       const list = await restaurantList();
       setList(list);
-      setPercent1(List.data[0].WN);
-      setPercent2(List.data[0].SE);
+      setPercent1(list.data[0].WN);
+      setPercent2(list.data[0].SE);
     } catch (error) {
       return error;
     }
   };
   useEffect(() => {
     fetch();
-  }, [List]);
+  }, []);
   return (
     <Container>
       <Title>지역을 선택해주세요.</Title>
