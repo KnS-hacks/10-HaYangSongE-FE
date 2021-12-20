@@ -86,7 +86,6 @@ const Contents = () => {
         setUser(userData.data);
         const info = await userInfoAPI(User.username);
         setUserProfile(info.data);
-        console.log(UserProfile);
         history.push('/select');
         // false 인 경우 로그인 실패하고 알림 출력
       } else {

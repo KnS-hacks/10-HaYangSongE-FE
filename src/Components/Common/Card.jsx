@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import Button from './Button';
 import Tag from './Tag';
 import StyledLink from './StyledLink';
-// 전체 카드바 (x) Box
+// card Box
 const CardBox = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 520px;
+  width: 525px;
   height: 200px;
   padding-bottom: 50px;
 `;

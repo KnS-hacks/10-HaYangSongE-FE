@@ -15,6 +15,7 @@ const InputBox = styled.div`
   display: flex;
   align-items: center;
   border-bottom: 2.5px solid black;
+  margin-top: 3vh;
   width: 95%;
   input {
     font-family: inherit;
@@ -47,6 +48,7 @@ const ResultBox = styled.div`
 `;
 
 const ResultBox2 = styled.div`
+  margin-top: 3vh;
   display: flex;
   width: 90%;
   flex-wrap: wrap;
