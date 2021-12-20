@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -46,10 +47,17 @@ const Title = ({ restaurant, address, waiting, step }) => {
 };
 
 Title.propTypes = {
-  restaurant: PropTypes.string.isRequired,
-  address: PropTypes.string.isRequired,
-  waiting: PropTypes.number.isRequired,
-  step: PropTypes.number.isRequired,
+  restaurant: PropTypes.string,
+  address: PropTypes.string,
+  waiting: PropTypes.array,
+  step: PropTypes.number,
+};
+
+Title.defaultProps = {
+  restaurant: '',
+  address: '',
+  waiting: [],
+  step: 0,
 };
 
 export default Title;

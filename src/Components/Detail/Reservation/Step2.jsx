@@ -39,7 +39,6 @@ const Content = styled.div`
     margin-right: 25px;
   }
   & > div:nth-child(2) {
-    width: 30%;
     font-weight: 700;
     margin-left: 25px;
   }
@@ -60,7 +59,6 @@ const ButtonDiv = styled.div`
 const PersonDiv = styled.p`
   width: 130px;
   height: 100px;
-  text-align: left;
   overflow-y: auto;
 
   &::-webkit-scrollbar {

@@ -7,7 +7,6 @@ import { UserData, UserInfo } from '../../Recoil/User';
 const MyPage = () => {
   const user = useRecoilValue(UserData);
   const profile = useRecoilValue(UserInfo);
-  console.log(profile);
   return (
     <Contents
       userName={profile.full_name}

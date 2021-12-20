@@ -57,7 +57,7 @@ Button.propTypes = {
   Content: PropTypes.string,
   backgroundColor: PropTypes.string,
   Color: PropTypes.string,
-  ClickFunc: PropTypes.func.isRequired,
+  ClickFunc: PropTypes.func,
   Disabled: PropTypes.bool,
 };
 
@@ -67,6 +67,7 @@ Button.defaultProps = {
   Content: 'None',
   backgroundColor: '#ffffff',
   Color: Colors.main,
+  ClickFunc: () => {},
   Disabled: false,
 };
 
