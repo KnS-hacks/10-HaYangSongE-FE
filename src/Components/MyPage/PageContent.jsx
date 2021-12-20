@@ -47,7 +47,6 @@ const Container = styled.div`
 // 각각 하양송이, 아이디값, 핸드폰번호값, 날짜 받아오기 => 태그는...
 // eslint-disable-next-line react/prop-types
 const Contents = ({ userName, userID, userNumber, userStep, userDate }) => {
-  console.log(userName);
   const history = useHistory();
   const routeChange = () => {
     history.push('./modifypage');

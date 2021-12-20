@@ -11,8 +11,8 @@ import Modal from '../Common/Modal';
 import { restaurantState } from '../../Recoil/Reservation';
 
 const BtnDiv = styled.div`
-  /* width: 100%; */
   button {
+    min-width: 500px;
     margin-left: 10px;
     margin-bottom: 20px;
     position: fixed;

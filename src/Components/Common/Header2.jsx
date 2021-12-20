@@ -3,7 +3,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import Colors from '../../Assets/Colors/Colors';
 
 const Container = styled.div`
   box-sizing: border-box;
@@ -12,7 +11,6 @@ const Container = styled.div`
   .selected span {
     display: inline-block;
     box-sizing: border-box;
-    border-bottom: 8px solid ${Colors.main};
     font-weight: 700;
   }
 `;
@@ -20,6 +18,7 @@ const Container = styled.div`
 const Place = styled.span`
   display: inline-block;
   margin: 40px 40px 0 0;
+  /* padding-bottom: 20px; */
   font-size: 1.5rem;
   font-weight: 400;
   :hover {
