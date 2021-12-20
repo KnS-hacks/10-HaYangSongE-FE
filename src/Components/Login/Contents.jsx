@@ -1,3 +1,4 @@
+/* eslint-disable import/named */
 /* eslint-disable no-alert */
 /* eslint-disable no-unused-vars */
 /* eslint-disable consistent-return */
