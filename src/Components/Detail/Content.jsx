@@ -8,7 +8,10 @@ import Colors from '../../Assets/Colors/Colors';
 import TestRes from '../../Assets/Images/TestRestaurant.jpg';
 import Button from '../Common/Button';
 import Modal from '../Common/Modal';
-import { restaurantState } from '../../Recoil/Reservation';
+import { friendsState, restaurantState } from '../../Recoil/Reservation';
+import Step1 from './Reservation/Step1';
+import Step2 from './Reservation/Step2';
+import Step3 from './Reservation/Step3';
 
 const BtnDiv = styled.div`
   button {
@@ -26,14 +29,46 @@ const Container = styled.div``;
 const Content = ({ restaurantName, waiting, address, step, match }) => {
   const [visible, setVisible] = useState(false);
   const [ResId, setResId] = useRecoilState(restaurantState);
+  const [FriendsList, setFriendsList] = useRecoilState(friendsState);
+  // 현재 페이지 번호를 매기는 state
+  const [CurrentPage, setCurrentPage] = useState(0);
+
+  // 모달 열기
   const toggleModal = () => {
     setVisible(true);
     setResId(match.params.resId);
   };
 
+  // 모달 닫기
   const closeModal = () => {
     setVisible(false);
+    // 닫으면 단계 0으로
+    setCurrentPage(0);
+    // 닫으면 태그한 계정 없음
+    setFriendsList([]);
   };
+
+  // 다음 단계로 넘어가는 함수
+  const increasePage = () => {
+    setCurrentPage(CurrentPage + 1);
+  };
+  // 이전 단계로 넘어가는 함수
+  const decreasePage = () => {
+    setCurrentPage(CurrentPage - 1);
+  };
+
+  const PAGES = [
+    <Step1 increasePageFunc={increasePage} />,
+    <Step2
+      restaurantName={restaurantName}
+      waiting={waiting}
+      address={address}
+      step={step}
+      increasePageFunc={increasePage}
+      decreasePageFunc={decreasePage}
+    />,
+    <Step3 />,
+  ];
 
   return (
     <>
@@ -60,11 +95,7 @@ const Content = ({ restaurantName, waiting, address, step, match }) => {
         title="대기 등록"
         visible={visible}
         closeModal={closeModal}
-        // 가게 정보
-        restaurantName={restaurantName}
-        waiting={waiting}
-        address={address}
-        step={step}
+        current={PAGES[CurrentPage]}
       />
     </>
   );

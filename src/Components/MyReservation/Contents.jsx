@@ -100,10 +100,17 @@ const Contents = ({ remainTime, order, resName, peopleNum }) => {
 };
 
 Contents.propTypes = {
-  remainTime: PropTypes.number.isRequired,
-  order: PropTypes.number.isRequired,
-  resName: PropTypes.string.isRequired,
-  peopleNum: PropTypes.number.isRequired,
+  remainTime: PropTypes.number,
+  order: PropTypes.number,
+  resName: PropTypes.string,
+  peopleNum: PropTypes.number,
+};
+
+Contents.defaultProps = {
+  remainTime: 0,
+  order: 0,
+  resName: '',
+  peopleNum: 0,
 };
 
 export default Contents;
