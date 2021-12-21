@@ -1,19 +1,6 @@
 /* eslint-disable import/no-unresolved */
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-// import JoinPage from '../Pages/JoinPage';
-// import TestPage from '../Pages/TestPage';
-// import LoginPage from '../Pages/LoginPage';
-// import SelectPage from '../Pages/SelectPage';
-// import DetailPage from '../Pages/DetailPage';
-// import SearchPage from '../Pages/SearchPage';
-// import MyReservationPage from '../Pages/MyReservationPage';
-// import MyPage from '../Pages/MyPage';
-// import ModifyPage from '../Pages/ModifyPage';
-// import District1Page from '../Pages/District1Page';
-// import District2Page from '../Pages/District2Page';
-// import Msg from '../Pages/Msg';
-
 // url config
 import {
   JoinPage,
