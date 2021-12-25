@@ -17,6 +17,6 @@ export const UserData = atom({
 // 유저 정보
 export const UserInfo = atom({
   key: 'UserInfo',
-  default: [],
+  default: {},
   effects_UNSTABLE: [persistAtom],
 });

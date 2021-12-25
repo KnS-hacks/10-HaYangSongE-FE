@@ -45,7 +45,7 @@ export const userModify = async param => {
 // waiting
 export const userWaiting = async param => {
   const res = await api({
-    url: `/service/waiting/${param}/?format=json`,
+    url: `/account/guest/waiting/${param}/?format=json`,
     type: 'get',
     param,
   });

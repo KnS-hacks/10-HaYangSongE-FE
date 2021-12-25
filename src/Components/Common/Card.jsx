@@ -11,6 +11,7 @@ const CardBox = styled.div`
   width: 700px;
   height: 220px;
   padding: 10px;
+  margin-bottom: 30px;
   box-sizing: border-box;
 `;
 

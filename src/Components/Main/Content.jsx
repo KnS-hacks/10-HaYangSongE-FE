@@ -10,16 +10,18 @@ const CardDiv = styled.div`
   overflow-y: auto;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
   margin-top: 2vh;
+  width: 100vw;
 `;
 
 const NoneInfo = styled.p`
   display: flex;
   align-items: center;
+  justify-content: center;
   font-size: 2rem;
   font-weight: 700;
   height: 70vh;
+  width: 90vw;
 `;
 
 const Content = ({ listData }) => {

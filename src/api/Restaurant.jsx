@@ -23,7 +23,7 @@ export const restaurantDetail = async param => {
 // 식당 waiting 생성
 export const waitingCreate = async param => {
   const res = await api({
-    url: '/service/waiting/?format=json',
+    url: '/service/waiting/',
     type: 'post',
     param,
   });

@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { restaurantList } from '../../api/Restaurant';
@@ -12,11 +13,12 @@ const Search = () => {
     } catch (error) {
       return error;
     }
-    return ResList;
   };
+
   useEffect(() => {
     fetch();
   }, []);
+
   return (
     <>
       <SearchContent listData={ResList} />

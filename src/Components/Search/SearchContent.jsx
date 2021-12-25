@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/forbid-prop-types */
 import React, { useState, useEffect } from 'react';
@@ -8,12 +9,13 @@ import Colors from '../../Assets/Colors/Colors';
 import Card from '../Common/Card';
 
 const Container = styled.div`
-  /* width: 100vw; */
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
 `;
 
 const InputBox = styled.div`
   display: flex;
-  align-items: center;
   border-bottom: 2.5px solid black;
   margin-top: 3vh;
   width: 95%;
@@ -50,9 +52,8 @@ const ResultBox = styled.div`
 const ResultBox2 = styled.div`
   margin-top: 3vh;
   display: flex;
-  width: 90%;
   flex-wrap: wrap;
-  justify-content: space-between;
+  overflow-y: auto;
 `;
 
 const SearchContent = ({ listData }) => {
