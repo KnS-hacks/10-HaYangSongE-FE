@@ -41,3 +41,13 @@ export const userModify = async param => {
   });
   return res;
 };
+
+// waiting
+export const userWaiting = async param => {
+  const res = await api({
+    url: `/service/waiting/${param}/?format=json`,
+    type: 'get',
+    param,
+  });
+  return res;
+};
