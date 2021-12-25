@@ -7,15 +7,16 @@ import StyledLink from './StyledLink';
 // card Box
 const CardBox = styled.div`
   display: flex;
-  justify-content: space-between;
-  width: 525px;
-  height: 200px;
-  padding-bottom: 50px;
+  justify-content: space-around;
+  width: 700px;
+  height: 220px;
+  padding: 10px;
+  box-sizing: border-box;
 `;
 
 // 맛있는 음식 사진
 const FoodImg = styled.img`
-  width: 200px;
+  width: 250px;
   height: 200px;
 `;
 

@@ -7,7 +7,6 @@ import { NavLink } from 'react-router-dom';
 const Container = styled.div`
   box-sizing: border-box;
   height: 100px;
-  /* margin-bottom: 30px; */
   .selected span {
     display: inline-block;
     box-sizing: border-box;
@@ -18,7 +17,6 @@ const Container = styled.div`
 const Place = styled.span`
   display: inline-block;
   margin: 40px 40px 0 0;
-  /* padding-bottom: 20px; */
   font-size: 1.5rem;
   font-weight: 400;
   :hover {
