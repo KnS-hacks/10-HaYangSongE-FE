@@ -78,13 +78,14 @@ const Contents = () => {
       username: inputs.username,
       password: inputs.password,
     };
+    setUserProfile({});
     try {
       // api 통신
       const userData = await userLogin(values);
       // success 가 true 일 경우에만 페이지 이동
       if (userData.data.success) {
         setUser(userData.data);
-        const info = await userInfoAPI(User.username);
+        const info = await userInfoAPI(userData.data.username);
         setUserProfile(info.data);
         history.push('/select');
         // false 인 경우 로그인 실패하고 알림 출력

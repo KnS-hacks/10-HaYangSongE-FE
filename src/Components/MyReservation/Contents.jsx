@@ -71,7 +71,7 @@ const Contents = ({ remainTime, order, resName, peopleNum }) => {
   const cancel = () => {
     if (window.confirm('정말 줄서기를 취소하시나요?')) {
       alert('줄서기가 취소되었습니다.');
-      history.push('/');
+      history.push('/district1');
     }
   };
   return (
