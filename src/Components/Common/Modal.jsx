@@ -35,12 +35,6 @@ const Modal = ({ visible, closeModal, current }) => {
       <Dim visible={visible} closeModal={closeModal} />
       <ModalDiv visible={visible}>
         <Contents>{current}</Contents>
-        {/* <Button
-          ClickFunc={increasePage}
-          backgroundColor={Colors.main}
-          Content="확인"
-          Color="#ffffff"
-        /> */}
       </ModalDiv>
     </>
   );

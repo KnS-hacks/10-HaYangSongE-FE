@@ -1,26 +1,42 @@
-import React from 'react';
+/* eslint-disable consistent-return */
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
+import { restaurantDetail } from '../../api/Restaurant';
+import { userWaiting } from '../../api/User';
 import Contents from '../../Components/MyReservation/Contents';
-import {
-  friendsState,
-  myRestaurantName,
-  orderState,
-  waitingState,
-} from '../../Recoil/Reservation';
+import { UserInfo } from '../../Recoil/User';
 
-// Would Fix :: Recoil (x) api애서 통신해서 가져오기
 const MyReservation = () => {
-  const myTime = useRecoilValue(waitingState);
-  const myOrder = useRecoilValue(orderState);
-  const myResName = useRecoilValue(myRestaurantName);
-  const myPeople = useRecoilValue(friendsState).length + 1;
+  const user = useRecoilValue(UserInfo);
+  const [ResInfo, setResInfo] = useState({});
+  const [WaitingInfo, setWaitingInfo] = useState({});
+  const [WaitingNum, setWaitingNum] = useState(0);
+
+  const fetch = async () => {
+    try {
+      // user의 waiting pk 로 waiting 정보 조회 및 저장
+      const waitingInfo = (await userWaiting(user.waiting_current)).data;
+      setWaitingInfo(waitingInfo);
+      setWaitingNum(waitingInfo.member.length);
+      // waiting 정보 내의 식당 정보 조회
+      const resInfo = (await restaurantDetail(waitingInfo.restaurant)).data;
+      setResInfo(resInfo);
+    } catch (error) {
+      return error;
+    }
+  };
+  useEffect(() => {
+    fetch();
+  }, []);
+
   return (
     <>
       <Contents
-        remainTime={myTime}
-        order={myOrder}
-        resName={myResName}
-        peopleNum={myPeople}
+        // remainTime={myTime}
+        order={WaitingInfo.order}
+        resName={ResInfo.name}
+        peopleNum={WaitingNum}
       />
     </>
   );
