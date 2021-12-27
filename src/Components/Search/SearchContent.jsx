@@ -56,52 +56,25 @@ const ResultBox2 = styled.div`
   overflow-y: auto;
 `;
 
-const SearchContent = ({ listData }) => {
-  const [searchText, setsearchText] = useState('');
-  const [resultList, setresultList] = useState([]);
-  // 서치 input handle
-  const handleSearch = e => {
-    setsearchText(e.target.value);
-  };
-
-  const searchOutput = () => {
-    const filteredList = listData.filter(
-      item => item.name.indexOf(searchText) > -1,
-    );
-    setresultList(filteredList);
-  };
-
-  // 마운트 될 때 searchText 가 없으면 전체 리스트를 불러오기
-  useEffect(() => {
-    if (searchText.length === 0) {
-      setresultList(listData);
-    }
-  }, []);
-
-  useEffect(() => {
-    searchOutput();
-  }, [searchText]);
-
+// props 로 서치 결과 list 와 input 을 핸들링 하는 함수 handleInput 을 받는다.
+const SearchContent = ({ listData, handleInput }) => {
   return (
     <Container>
       <InputBox>
-        <input
-          onChange={handleSearch}
-          placeholder="식당 이름을 검색해보세요."
-        />
+        <input onChange={handleInput} placeholder="식당 이름을 검색해보세요." />
         <Search width="40" height="40" stroke="black" />
       </InputBox>
       <div>
         <ResultNum>
-          검색결과 <span>{resultList.length}</span>건
+          검색결과 <span>{listData.length}</span>건
         </ResultNum>
-        {resultList.length === 0 ? (
+        {listData.length === 0 ? (
           <ResultBox>
             <p>일치하는 검색 결과가 없습니다.</p>
           </ResultBox>
         ) : (
           <ResultBox2>
-            {resultList.map(item => (
+            {listData.map(item => (
               <Card
                 title={item.name}
                 address={item.branch_name}
@@ -119,6 +92,7 @@ const SearchContent = ({ listData }) => {
 
 SearchContent.propTypes = {
   listData: PropTypes.any.isRequired,
+  handleInput: PropTypes.func.isRequired,
 };
 
 export default SearchContent;
