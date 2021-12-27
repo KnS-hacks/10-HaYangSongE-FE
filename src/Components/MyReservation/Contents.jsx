@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Colors from '../../Assets/Colors/Colors';
 
 const Wrapper = styled.div`
@@ -66,7 +66,7 @@ const CancelBtn = styled.button`
 `;
 
 const Contents = ({ remainTime, order, resName, peopleNum }) => {
-  const history = useHistory();
+  const history = useNavigate();
   // 줄서기 취소이벤트
   const cancel = () => {
     if (window.confirm('정말 줄서기를 취소하시나요?')) {

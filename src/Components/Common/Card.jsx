@@ -64,11 +64,12 @@ Card.propTypes = {
   address: PropTypes.string.isRequired,
   step: PropTypes.number,
   resId: PropTypes.number.isRequired,
-  pic: PropTypes.string.isRequired,
+  pic: PropTypes.string,
 };
 
 Card.defaultProps = {
   step: 0,
+  pic: '사진이 없어여',
 };
 
 export default Card;

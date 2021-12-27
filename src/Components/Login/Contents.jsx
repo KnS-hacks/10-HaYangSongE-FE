@@ -3,7 +3,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable consistent-return */
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useRecoilState } from 'recoil';
 import { ReactComponent as Logo } from '../../Assets/Icons/Logo.svg';
@@ -57,7 +57,7 @@ const JoinInfo = styled.p`
 `;
 
 const Contents = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   // 로그인 정보 저장
   const [User, setUser] = useRecoilState(UserData);
   // 유저 정보 저장
@@ -87,7 +87,7 @@ const Contents = () => {
         setUser(userData.data);
         const info = await userInfoAPI(userData.data.username);
         setUserProfile(info.data);
-        history.push('/select');
+        navigate('/select');
         // false 인 경우 로그인 실패하고 알림 출력
       } else {
         alert('로그인에 실패했습니다. 다시 로그인해주세요.');

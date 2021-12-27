@@ -1,6 +1,6 @@
 /* eslint-disable no-alert */
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Button from '../Common/Button';
@@ -53,7 +53,7 @@ const Container = styled.div`
 
 // eslint-disable-next-line react/prop-types
 const Contents = ({ userName, userID, userNumber, userStep, userDate }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [inputs, setinputs] = useState({});
 
   const handleInputs = e => {
@@ -75,7 +75,7 @@ const Contents = ({ userName, userID, userNumber, userStep, userDate }) => {
       // api 통신
       const modifyData = await userModify(values);
       if (modifyData) {
-        history.push('/mypage');
+        navigate('/mypage');
       } else {
         alert('수정 실패');
       }

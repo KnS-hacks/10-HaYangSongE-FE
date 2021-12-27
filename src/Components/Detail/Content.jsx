@@ -26,7 +26,7 @@ const BtnDiv = styled.div`
 
 const Container = styled.div``;
 
-const Content = ({ restaurantName, waiting, address, step, match }) => {
+const Content = ({ restaurantName, waiting, address, step, resId }) => {
   const [visible, setVisible] = useState(false);
   const [ResId, setResId] = useRecoilState(restaurantState);
   const [FriendsList, setFriendsList] = useRecoilState(friendsState);
@@ -36,7 +36,7 @@ const Content = ({ restaurantName, waiting, address, step, match }) => {
   // 모달 열기
   const toggleModal = () => {
     setVisible(true);
-    setResId(match.params.resId);
+    setResId(resId);
   };
 
   // 모달 닫기
@@ -106,7 +106,7 @@ Content.propTypes = {
   address: PropTypes.string,
   waiting: PropTypes.number,
   step: PropTypes.number,
-  match: PropTypes.any.isRequired,
+  resId: PropTypes.any.isRequired,
 };
 
 Content.defaultProps = {

@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Button from '../../Common/Button';
 import Colors from '../../../Assets/Colors/Colors';
 import {
@@ -83,7 +83,7 @@ const Person = styled.span`
 `;
 
 const Step2 = ({ restaurantName, increasePageFunc, decreasePageFunc }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [Today, setToday] = useState('');
   // 현재 날짜 가져오는 함수
   const createDate = () => {
@@ -121,7 +121,7 @@ const Step2 = ({ restaurantName, increasePageFunc, decreasePageFunc }) => {
       if (res.data.success === false) {
         alert('식당에서 요구하는 백신 접종 차수에 미달합니다.');
         alert('예약을 종료하고 홈 화면으로 돌아갑니다.');
-        history.push('/district1');
+        navigate('/district1');
       }
     } catch (error) {
       return error;
