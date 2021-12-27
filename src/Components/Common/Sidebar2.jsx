@@ -31,7 +31,7 @@ const Container = styled.div`
   div svg {
     padding: 20px;
   }
-  .selected svg {
+  .active svg {
     stroke: ${Colors.main};
   }
   // 전체 svg
@@ -58,14 +58,14 @@ const Sidebar2 = () => {
     <Container>
       <Logo width="75" height="60" />
       <div>
-        <StyledNavLink to="/search" activeClassName="selected">
+        <StyledNavLink to="/search">
           <Search stroke="black" width="45" height="45" />
         </StyledNavLink>
-        <StyledNavLink to="/reservation" activeClassName="selected">
+        <StyledNavLink to="/reservation">
           <MyReservation stroke="black" />
         </StyledNavLink>
       </div>
-      <StyledNavLink to="/mypage" activeClassName="selected">
+      <StyledNavLink to="/mypage">
         <Profile stroke="black" />
       </StyledNavLink>
     </Container>

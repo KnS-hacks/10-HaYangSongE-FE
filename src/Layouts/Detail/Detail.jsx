@@ -15,15 +15,14 @@ const Container = styled.div`
   overflow-y: auto;
 `;
 
-const Detail = ({ match }) => {
+const Detail = ({ resId }) => {
   const [Restaurant, setRestaurant] = useState([]);
   const [ResId, setResId] = useRecoilState(restaurantState);
-  const { resId } = match.params;
   const fetch = async () => {
     try {
       const restaurant = await restaurantDetail(resId);
       setRestaurant(restaurant.data);
-      setResId(match.params.resId);
+      setResId(resId);
     } catch (error) {
       return error;
     }
@@ -44,7 +43,7 @@ const Detail = ({ match }) => {
         <Content
           restaurantName={Restaurant.name}
           menu={Restaurant.menu}
-          match={match}
+          resId={resId}
         />
       </Container>
     </>
@@ -52,7 +51,7 @@ const Detail = ({ match }) => {
 };
 
 Detail.propTypes = {
-  match: PropTypes.any.isRequired,
+  resId: PropTypes.any.isRequired,
 };
 
 export default Detail;

@@ -7,9 +7,8 @@ import { NavLink } from 'react-router-dom';
 const Container = styled.div`
   box-sizing: border-box;
   height: 100px;
-  .selected span {
-    display: inline-block;
-    box-sizing: border-box;
+
+  .active span {
     font-weight: 700;
   }
 `;
@@ -32,6 +31,12 @@ const StyledNavLink = styled(NavLink)`
   &:link {
     color: black;
     text-decoration: none;
+  }
+
+  &.active {
+    display: inline-block;
+    box-sizing: border-box;
+    font-weight: 700;
   }
 `;
 
@@ -67,10 +72,10 @@ const Header2 = () => {
 
   return (
     <Container>
-      <StyledNavLink to="/district1" activeClassName="selected">
+      <StyledNavLink to="/district1">
         <Place>서북구</Place>
       </StyledNavLink>
-      <StyledNavLink exact to="/district2" activeClassName="selected">
+      <StyledNavLink to="/district2">
         <Place>동남구</Place>
       </StyledNavLink>
     </Container>

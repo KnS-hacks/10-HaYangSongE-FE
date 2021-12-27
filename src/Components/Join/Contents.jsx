@@ -1,7 +1,7 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-alert */
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { userJoin } from '../../api/User';
 import Button from '../Common/Button';
@@ -36,7 +36,7 @@ const Title = styled.p`
 
 const Contents = () => {
   // useHistory 사용
-  const history = useHistory();
+  const navigate = useNavigate();
   // input 관련 로직
   const [inputs, setinputs] = useState({});
 
@@ -71,7 +71,7 @@ const Contents = () => {
     // 비밀번호가 동일한 경우에만 회원가입
     if (inputs.password === inputs.password2) {
       fetch();
-      history.push('/');
+      navigate('/');
     } else {
       alert('비밀번호가 동일하지 않습니다. 비밀번호를 동일하게 맞춰주세요.');
     }

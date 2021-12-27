@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ReactComponent as People } from '../../Assets/Icons/People.svg';
 
 const Container = styled.div`
@@ -34,9 +34,9 @@ const Percent = styled.p`
 `;
 
 const District = ({ districtName, percent, Url }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const chooseDistrict = () => {
-    history.push(`${Url}`);
+    navigate(`${Url}`);
   };
   return (
     <Container onClick={chooseDistrict}>
