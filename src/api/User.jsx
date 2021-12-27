@@ -5,7 +5,7 @@ import api from './api';
 // 로그인
 export const userLogin = async param => {
   const res = await api({
-    url: '/account/login/?format=json',
+    url: '/account/login',
     type: 'post',
     param,
   });
@@ -15,7 +15,7 @@ export const userLogin = async param => {
 // 회원가입
 export const userJoin = async param => {
   const res = await api({
-    url: '/account/guest/?format=json',
+    url: '/account/guest',
     type: 'post',
     param,
   });
@@ -25,7 +25,7 @@ export const userJoin = async param => {
 // user 정보
 export const userInfoAPI = async param => {
   const res = await api({
-    url: `/account/guest/${param}/?format=json`,
+    url: `/account/guest/${param}`,
     type: 'get',
     param,
   });
@@ -35,7 +35,7 @@ export const userInfoAPI = async param => {
 // 수정
 export const userModify = async param => {
   const res = await api({
-    url: '/modify/?format=json', // 수정 url 필요
+    url: '/modify', // 수정 url 필요
     type: 'patch',
     param,
   });
@@ -45,7 +45,7 @@ export const userModify = async param => {
 // waiting
 export const userWaiting = async param => {
   const res = await api({
-    url: `/account/guest/waiting/${param}/?format=json`,
+    url: `/account/guest/waiting/${param}`,
     type: 'get',
     param,
   });
