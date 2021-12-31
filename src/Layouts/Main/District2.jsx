@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable react-hooks/exhaustive-deps */
 import BarLoader from 'react-spinners/BarLoader';
 import React, { useEffect, useState } from 'react';
@@ -18,16 +19,14 @@ const District2 = () => {
 
   const fetch = async () => {
     try {
-      const list = await restaurantList();
-      const filteredList = list.data.filter(item => item.district === 'SE');
+      const list = await restaurantList('SE');
       setTimeout(() => {
-        setDis2List(filteredList);
+        setDis2List(list.data);
         setisLoading(false);
       }, 500);
     } catch (error) {
       return error;
     }
-    return Dis2List;
   };
 
   useEffect(() => {
