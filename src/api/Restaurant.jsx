@@ -2,15 +2,6 @@
 /* eslint-disable no-unused-vars */
 import api from './api';
 
-// 전체 식당 list 조회
-export const restaurantList = async param => {
-  const res = await api({
-    url: '/account/restaurant',
-    type: 'get',
-  });
-  return res;
-};
-
 // 식당 detail 조회
 export const restaurantDetail = async param => {
   const res = await api({
@@ -34,6 +25,16 @@ export const waitingCreate = async param => {
 export const restaurantSearch = async param => {
   const res = await api({
     url: `/account/restaurant?key=${param}`,
+    type: 'get',
+    param,
+  });
+  return res;
+};
+
+// 지역별 식당 List
+export const restaurantList = async param => {
+  const res = await api({
+    url: `/account/restaurant?district=${param}`,
     type: 'get',
     param,
   });
