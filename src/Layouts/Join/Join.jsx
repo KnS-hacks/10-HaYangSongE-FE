@@ -7,8 +7,6 @@ import { userJoin } from '../../api/User';
 // import { useNavigate } from 'react-router-dom';
 
 const Join = () => {
-  // navigate 정의
-  // const navigate = useNavigate();
   // input 관련 로직
   const [inputs, setinputs] = useState({});
 
