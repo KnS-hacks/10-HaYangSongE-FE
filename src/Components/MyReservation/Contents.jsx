@@ -65,6 +65,16 @@ const CancelBtn = styled.button`
   }
 `;
 
+const NoneDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 70vh;
+  font-size: 1.8rem;
+  font-weight: 700;
+`;
+
 const Contents = ({ remainTime, order, resName, peopleNum }) => {
   const history = useNavigate();
   // 줄서기 취소이벤트
@@ -74,6 +84,16 @@ const Contents = ({ remainTime, order, resName, peopleNum }) => {
       history.push('/district1');
     }
   };
+
+  if (!resName) {
+    return (
+      <Wrapper>
+        <NoneDiv>
+          <p>예약 정보가 없습니다.</p>
+        </NoneDiv>
+      </Wrapper>
+    );
+  }
   return (
     <Wrapper>
       <Container>
