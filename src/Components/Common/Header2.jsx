@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
@@ -57,15 +58,13 @@ const Header2 = () => {
   const [UserProfile, setUserProfile] = useRecoilState(UserInfo);
   const navigate = useNavigate();
   const logout = () => {
-    console.log('로그아웃');
     alert('정말 로그아웃 하시겠어요?');
     // 모든 유저 정보 삭제
     setUser();
     setUserProfile();
     sessionStorage.removeItem('user');
     window.sessionStorage.clear();
-    const a = sessionStorage.getItem('user');
-    console.log(a);
+    // 홈 화면으로 이동
     navigate('/');
   };
   return (

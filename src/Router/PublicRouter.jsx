@@ -3,7 +3,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 
 const PublicRouter = () => {
   const user = JSON.parse(sessionStorage.getItem('user'));
-  return !user ? <Navigate to="/" /> : <Outlet />;
+  return !user.UserData ? <Navigate to="/" /> : <Outlet />;
 };
 
 export default PublicRouter;
