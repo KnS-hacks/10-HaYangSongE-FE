@@ -15,25 +15,29 @@ const MyReservation = () => {
     try {
       // user의 waiting pk 로 waiting 정보 조회 및 저장
       const waitingInfo = (await userWaiting(user.username)).data;
-      setWaitingInfo(waitingInfo);
-      setWaitingNum(waitingInfo.members.length);
+      console.log(waitingInfo);
+      if (waitingInfo.data.success) {
+        setWaitingInfo(waitingInfo);
+        setWaitingNum(waitingInfo.members.length);
+      } else {
+        setWaitingInfo({});
+      }
     } catch (error) {
       return error;
     }
   };
+
   useEffect(() => {
     fetch();
   }, []);
 
   return (
-    <>
-      <Contents
-        remainTime={WaitingInfo.left_time}
-        order={WaitingInfo.order}
-        resName={WaitingInfo.restaurant}
-        peopleNum={WaitingNum}
-      />
-    </>
+    <Contents
+      remainTime={WaitingInfo.left_time}
+      order={WaitingInfo.order}
+      resName={WaitingInfo.restaurant}
+      peopleNum={WaitingNum}
+    />
   );
 };
 
