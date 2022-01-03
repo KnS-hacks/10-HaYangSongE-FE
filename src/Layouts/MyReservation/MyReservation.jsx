@@ -15,7 +15,6 @@ const MyReservation = () => {
     try {
       // user의 waiting pk 로 waiting 정보 조회 및 저장
       const waitingInfo = (await userWaiting(user.username)).data;
-      console.log(waitingInfo);
       if (waitingInfo.data.success) {
         setWaitingInfo(waitingInfo);
         setWaitingNum(waitingInfo.members.length);

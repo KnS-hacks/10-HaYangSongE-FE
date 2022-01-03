@@ -28,8 +28,14 @@ const Detail = ({ resId }) => {
     }
     return Restaurant;
   };
+
   useEffect(() => {
     fetch();
+  }, []);
+
+  useEffect(() => {
+    window.Kakao.init(process.env.REACT_APP_KAKAO_KEY);
+    console.log(window.Kakao.isInitialized());
   }, []);
   return (
     <>
