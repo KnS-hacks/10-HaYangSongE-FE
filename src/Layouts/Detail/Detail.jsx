@@ -33,10 +33,9 @@ const Detail = ({ resId }) => {
     fetch();
   }, []);
 
-  useEffect(() => {
-    window.Kakao.init(process.env.REACT_APP_KAKAO_KEY);
-    console.log(window.Kakao.isInitialized());
-  }, []);
+  // useEffect(() => {
+  //   window.Kakao.init(process.env.REACT_APP_KAKAO_KEY);
+  // }, []);
   return (
     <>
       <Container>

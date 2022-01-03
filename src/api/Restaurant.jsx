@@ -5,8 +5,9 @@ import api from './api';
 // 식당 detail 조회
 export const restaurantDetail = async param => {
   const res = await api({
-    url: `/account/restaurant/${param}`,
+    url: `/restaurant/${param}`,
     type: 'get',
+    param,
   });
   return res;
 };
@@ -14,7 +15,7 @@ export const restaurantDetail = async param => {
 // 식당 waiting 생성
 export const waitingCreate = async param => {
   const res = await api({
-    url: '/service/waiting',
+    url: '/waiting',
     type: 'post',
     param,
   });
@@ -24,7 +25,7 @@ export const waitingCreate = async param => {
 // 삭당 search
 export const restaurantSearch = async param => {
   const res = await api({
-    url: `/account/restaurant?key=${param}`,
+    url: `/restaurant?key=${param}`,
     type: 'get',
     param,
   });
@@ -34,7 +35,7 @@ export const restaurantSearch = async param => {
 // 지역별 식당 List
 export const restaurantList = async param => {
   const res = await api({
-    url: `/account/restaurant?district=${param}`,
+    url: `/restaurant?district=${param}`,
     type: 'get',
     param,
   });

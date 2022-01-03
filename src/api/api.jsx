@@ -1,5 +1,7 @@
 import Axios from 'axios';
 
+Axios.defaults.baseURL = 'http://52.78.74.152';
+
 const api = ({
   url,
   type = 'get',
