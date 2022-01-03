@@ -105,16 +105,16 @@ const Step2 = ({ restaurantName, increasePageFunc, decreasePageFunc }) => {
   const [MyWaiting, setMyWaiting] = useRecoilState(waitingState);
   const [MyResName, setMyResName] = useRecoilState(myRestaurantName);
 
-  const sendMsg = () => {
-    console.log(Kakao);
-    Kakao.Link.sendDefault({
-      objectType: 'text',
-      text: '테스트입니다',
-      link: {
-        webUrl: 'https://naver.com',
-      },
-    });
-  };
+  // const sendMsg = () => {
+  //   console.log(Kakao);
+  //   Kakao.Link.sendDefault({
+  //     objectType: 'text',
+  //     text: '테스트입니다',
+  //     link: {
+  //       webUrl: 'https://naver.com',
+  //     },
+  //   });
+  // };
 
   // waiting 제출 및 다음 단계 실행 함수
   // User의 예약 정보는 Recoil 에 저장하기.
@@ -136,7 +136,7 @@ const Step2 = ({ restaurantName, increasePageFunc, decreasePageFunc }) => {
         alert('예약을 종료하고 홈 화면으로 돌아갑니다.');
         navigate('/district1');
       }
-      sendMsg();
+      // sendMsg();
     } catch (error) {
       return error;
     }
