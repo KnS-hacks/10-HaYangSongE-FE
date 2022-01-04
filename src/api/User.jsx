@@ -6,7 +6,7 @@ import api from './api';
 export const userLogin = async param => {
   const res = await api({
     url: '/login',
-    type: 'post',
+    type: 'POST',
     param,
   });
   return res;
@@ -16,7 +16,7 @@ export const userLogin = async param => {
 export const userJoin = async param => {
   const res = await api({
     url: '/guest',
-    type: 'post',
+    type: 'POST',
     param,
   });
   return res;
@@ -26,7 +26,7 @@ export const userJoin = async param => {
 export const userInfoAPI = async param => {
   const res = await api({
     url: `/guest/${param}`,
-    type: 'get',
+    type: 'GET',
     param,
   });
   return res;
@@ -36,7 +36,7 @@ export const userInfoAPI = async param => {
 export const userModify = async param => {
   const res = await api({
     url: '/modify', // 수정 url 필요
-    type: 'patch',
+    type: 'PATCH',
     param,
   });
   return res;
@@ -46,7 +46,7 @@ export const userModify = async param => {
 export const userWaiting = async param => {
   const res = await api({
     url: `/guest/waiting/${param}`,
-    type: 'get',
+    type: 'GET',
     param,
   });
   return res;

@@ -6,7 +6,7 @@ import api from './api';
 export const restaurantDetail = async param => {
   const res = await api({
     url: `/restaurant/${param}`,
-    type: 'get',
+    type: 'GET',
     param,
   });
   return res;
@@ -16,7 +16,7 @@ export const restaurantDetail = async param => {
 export const waitingCreate = async param => {
   const res = await api({
     url: '/waiting',
-    type: 'post',
+    type: 'POST',
     param,
   });
   return res;
@@ -26,7 +26,7 @@ export const waitingCreate = async param => {
 export const restaurantSearch = async param => {
   const res = await api({
     url: `/restaurant?key=${param}`,
-    type: 'get',
+    type: 'GET',
     param,
   });
   return res;
@@ -36,7 +36,7 @@ export const restaurantSearch = async param => {
 export const restaurantList = async param => {
   const res = await api({
     url: `/restaurant?district=${param}`,
-    type: 'get',
+    type: 'GET',
     param,
   });
   return res;
