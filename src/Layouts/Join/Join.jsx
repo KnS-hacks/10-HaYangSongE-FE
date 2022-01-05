@@ -4,9 +4,10 @@
 import React, { useState } from 'react';
 import Contents from '../../Components/Join/Contents';
 import { userJoin } from '../../api/User';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Join = () => {
+  const navigate = useNavigate();
   // input 관련 로직
   const [inputs, setinputs] = useState({});
 
@@ -32,6 +33,7 @@ const Join = () => {
     try {
       // api 통신
       await userJoin(values);
+      navigate('/');
     } catch (error) {
       alert('입력 사항을 확인하고 다시 회원가입을 해주세요.');
     }
