@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 import Contents from '../../Components/MyPage/PageContent';
 import { UserData, UserInfo } from '../../Recoil/User';
@@ -13,18 +14,25 @@ const MyPage = () => {
 
   // edit on/off
   const [IsEdit, setIsEdit] = useState(false);
+
   // edit button toggle event
   const toggleEdit = () => {
     setIsEdit(true);
-    console.log(IsEdit);
   };
 
+  // input 핸들링
   const handleInputs = e => {
     setinputs({
       ...inputs,
       [e.target.name]: e.target.value,
     });
+    console.log(inputs);
   };
+
+  // 렌더링 되면 inputs 에 기존의 userData 넣기
+  useEffect(() => {
+    setinputs(profile);
+  }, [IsEdit]);
 
   return (
     <Contents
@@ -36,6 +44,7 @@ const MyPage = () => {
       editFunc={toggleEdit}
       editState={IsEdit}
       inputFunc={handleInputs}
+      inputValue={inputs}
     />
   );
 };
