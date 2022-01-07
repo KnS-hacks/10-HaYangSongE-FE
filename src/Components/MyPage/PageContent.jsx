@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import styled from 'styled-components';
 import propTypes from 'prop-types';
@@ -64,11 +65,12 @@ const Contents = ({
   editFunc,
   editState,
   inputFunc,
+  inputValue,
 }) => {
   return (
     <div>
       <Header>
-        <Info>안녕하세요, {userName} 님</Info>
+        <Info>안녕하세요, {userID} 님</Info>
         <Button
           Content="내 정보 수정하기"
           width="100%"
@@ -79,23 +81,23 @@ const Contents = ({
       <Wrapper>
         {editState ? (
           <Inputs
-            inputName="username"
-            inputContent="아이디"
-            inputValue={userID}
+            inputName="full_name"
+            inputContent="이름"
+            inputValue={inputValue.full_name}
             inputWidth="320px"
             inputChange={inputFunc}
           />
         ) : (
           <Container>
-            <span>아이디</span>
-            <span>{userID}</span>
+            <span>이름</span>
+            <span>{userName}</span>
           </Container>
         )}
         {editState ? (
           <Inputs
             inputName="phone_number"
             inputContent="휴대폰 번호"
-            inputValue={userNumber}
+            inputValue={inputValue.phone_number}
             inputWidth="320px"
             inputChange={inputFunc}
           />
@@ -109,7 +111,7 @@ const Contents = ({
           <InputNum
             inputName="vaccine_step"
             inputContent="예방접종 내역"
-            inputValue={userStep}
+            inputValue={inputValue.vaccine_step}
             inputChange={inputFunc}
           />
         ) : (
@@ -120,10 +122,10 @@ const Contents = ({
         )}
         {editState ? (
           <Inputs
-            inputType="vaccine_date"
+            inputType="date"
             inputContent="마지막 접종일"
             inputName="lastDate"
-            inputValue={userDate}
+            inputValue={inputValue.vaccine_date}
             inputWidth="320px"
             inputChange={inputFunc}
           />
@@ -147,6 +149,7 @@ Contents.propTypes = {
   editFunc: propTypes.func.isRequired,
   editState: propTypes.bool.isRequired,
   inputFunc: propTypes.func.isRequired,
+  inputValue: propTypes.object.isRequired,
 };
 
 export default Contents;
