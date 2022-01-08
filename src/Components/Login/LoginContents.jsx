@@ -54,7 +54,7 @@ const JoinInfo = styled.p`
   }
 `;
 
-const Contents = ({ inputFunc, loginFunc, inputValue }) => {
+const Contents = ({ inputFunc, loginFunc, inputValue, inputEnter }) => {
   return (
     <Container>
       <Content>
@@ -76,6 +76,7 @@ const Contents = ({ inputFunc, loginFunc, inputValue }) => {
               inputName="password"
               inputType="password"
               inputValue={inputValue.password}
+              inputEnter={inputEnter}
               inputPlaceholder="비밀번호를 입력해주세요."
             />
           </InputDiv>
@@ -98,6 +99,7 @@ Contents.propTypes = {
   inputFunc: propTypes.func.isRequired,
   loginFunc: propTypes.func.isRequired,
   inputValue: propTypes.object,
+  inputEnter: propTypes.func.isRequired,
 };
 
 Contents.defaultProps = {

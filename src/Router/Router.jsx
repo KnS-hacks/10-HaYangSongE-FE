@@ -10,7 +10,6 @@ import {
   SearchPage,
   MyReservationPage,
   MyPage,
-  ModifyPage,
   District1Page,
   District2Page,
 } from '@pages';
@@ -34,7 +33,6 @@ const Routers = () => {
           <Route path="/search" element={<SearchPage />} />
           <Route path="/reservation" element={<MyReservationPage />} />
           <Route path="/mypage" element={<MyPage />} />
-          <Route path="/modifypage" element={<ModifyPage />} />
         </Route>
         {/* 토큰이 존재하지 않을 경우 login, join 만 접근 가능  */}
         <Route path="/" element={<LoginPage />} />

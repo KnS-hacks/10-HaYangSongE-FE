@@ -2,7 +2,6 @@
 export { default as DetailPage } from './DetailPage';
 export { default as JoinPage } from './JoinPage';
 export { default as LoginPage } from './LoginPage';
-export { default as ModifyPage } from './ModifyPage';
 export { default as MyPage } from './MyPage';
 export { default as MyReservationPage } from './MyReservationPage';
 export { default as SearchPage } from './SearchPage';
