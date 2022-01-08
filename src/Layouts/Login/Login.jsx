@@ -4,7 +4,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import Contents from '../../Components/Login/Contents';
+import Contents from '../../Components/Login/LoginContents';
 import { UserData, UserInfo } from '../../Recoil/User';
 import { userInfoAPI, userLogin } from '../../api/User';
 

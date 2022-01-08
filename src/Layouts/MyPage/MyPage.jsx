@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { userEdit } from '../../api/User';
-import Contents from '../../Components/MyPage/PageContent';
+import Contents from '../../Components/MyPage/MyPageContent';
 import { UserData, UserInfo } from '../../Recoil/User';
 
 const MyPage = () => {

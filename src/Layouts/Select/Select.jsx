@@ -3,7 +3,7 @@
 /* eslint-disable consistent-return */
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import District from '../../Components/Select/District';
+import District from '../../Components/Select/SelectContents';
 import { ReactComponent as Map } from '../../Assets/Icons/Map.svg';
 import { restaurantList } from '../../api/Restaurant';
 
