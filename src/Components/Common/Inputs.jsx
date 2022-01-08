@@ -159,6 +159,7 @@ export const LoginInput = ({
   inputHeight,
   inputPlaceholder,
   inputChange,
+  inputEnter,
   inputName,
   inputValue,
 }) => {
@@ -169,6 +170,7 @@ export const LoginInput = ({
       height={inputHeight}
       placeholder={inputPlaceholder}
       onChange={inputChange}
+      onKeyUp={inputEnter}
       name={inputName}
       value={inputValue}
     />
@@ -181,6 +183,7 @@ LoginInput.propTypes = {
   inputHeight: PropTypes.string,
   inputPlaceholder: PropTypes.string,
   inputChange: PropTypes.any.isRequired,
+  inputEnter: PropTypes.func,
   inputName: PropTypes.string.isRequired,
   inputValue: PropTypes.any,
 };
@@ -191,4 +194,5 @@ LoginInput.defaultProps = {
   inputHeight: '45px',
   inputPlaceholder: 'None',
   inputValue: '',
+  inputEnter: () => {},
 };

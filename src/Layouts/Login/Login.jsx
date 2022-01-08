@@ -52,8 +52,20 @@ const Login = () => {
     }
   };
 
+  // enter 누를 시에도 login
+  const enterKey = () => {
+    if (window.event.keyCode === 13) {
+      fetch();
+    }
+  };
+
   return (
-    <Contents inputFunc={handleInputs} loginFunc={fetch} inputValue={inputs} />
+    <Contents
+      inputFunc={handleInputs}
+      loginFunc={fetch}
+      inputValue={inputs}
+      inputEnter={enterKey}
+    />
   );
 };
 
