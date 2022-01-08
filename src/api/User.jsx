@@ -33,9 +33,9 @@ export const userInfoAPI = async param => {
 };
 
 // 수정
-export const userModify = async param => {
+export const userEdit = async (id, param) => {
   const res = await api({
-    url: '/modify', // 수정 url 필요
+    url: `/guest/${id}`, // 수정 url 필요
     type: 'PATCH',
     param,
   });

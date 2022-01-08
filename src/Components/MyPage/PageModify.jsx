@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Button from '../Common/Button';
 import Colors from '../../Assets/Colors/Colors';
-import { userModify } from '../../api/User';
+import { userEdit } from '../../api/User';
 
 // 안녕하세요 ㅇㅇ님이랑 버튼 묶는 헤더
 const Header = styled.div`
@@ -73,7 +73,7 @@ const Contents = ({ userName, userID, userNumber, userStep, userDate }) => {
     };
     try {
       // api 통신
-      const modifyData = await userModify(values);
+      const modifyData = await userEdit(values);
       if (modifyData) {
         navigate('/mypage');
       } else {
