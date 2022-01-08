@@ -63,6 +63,7 @@ const Contents = ({
   userStep,
   userDate,
   editFunc,
+  editFinishFunc,
   editState,
   inputFunc,
   inputValue,
@@ -71,12 +72,19 @@ const Contents = ({
     <div>
       <Header>
         <Info>안녕하세요, {userID} 님</Info>
-        <Button
-          Content="내 정보 수정하기"
-          width="100%"
-          Height="50px"
-          ClickFunc={editFunc}
-        />
+        {editState ? (
+          <Button
+            Content="수정 완료"
+            Height="50px"
+            ClickFunc={editFinishFunc}
+          />
+        ) : (
+          <Button
+            Content="내 정보 수정하기"
+            Height="50px"
+            ClickFunc={editFunc}
+          />
+        )}
       </Header>
       <Wrapper>
         {editState ? (
@@ -86,6 +94,7 @@ const Contents = ({
             inputValue={inputValue.full_name}
             inputWidth="320px"
             inputChange={inputFunc}
+            inputPlaceholder="이름을 입력하세요."
           />
         ) : (
           <Container>
@@ -100,6 +109,7 @@ const Contents = ({
             inputValue={inputValue.phone_number}
             inputWidth="320px"
             inputChange={inputFunc}
+            inputPlaceholder="휴대폰 번호를 입력하세요."
           />
         ) : (
           <Container>
@@ -124,7 +134,7 @@ const Contents = ({
           <Inputs
             inputType="date"
             inputContent="마지막 접종일"
-            inputName="lastDate"
+            inputName="vaccine_date"
             inputValue={inputValue.vaccine_date}
             inputWidth="320px"
             inputChange={inputFunc}
@@ -147,6 +157,7 @@ Contents.propTypes = {
   userStep: propTypes.number.isRequired,
   userDate: propTypes.string.isRequired,
   editFunc: propTypes.func.isRequired,
+  editFinishFunc: propTypes.func.isRequired,
   editState: propTypes.bool.isRequired,
   inputFunc: propTypes.func.isRequired,
   inputValue: propTypes.object.isRequired,
