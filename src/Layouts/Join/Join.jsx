@@ -2,7 +2,7 @@
 /* eslint-disable import/order */
 /* eslint-disable consistent-return */
 import React, { useState } from 'react';
-import Contents from '../../Components/Join/Contents';
+import Contents from '../../Components/Join/JoinContents';
 import { userJoin } from '../../api/User';
 import { useNavigate } from 'react-router-dom';
 

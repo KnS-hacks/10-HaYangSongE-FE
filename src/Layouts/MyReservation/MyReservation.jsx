@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { userWaiting } from '../../api/User';
-import Contents from '../../Components/MyReservation/Contents';
+import Contents from '../../Components/MyReservation/MyReservationContents';
 import { UserInfo } from '../../Recoil/User';
 
 const MyReservation = () => {
