@@ -42,7 +42,13 @@ const Login = () => {
         setUser(userData.data);
         const info = await userInfoAPI(userData.data.username);
         setUserProfile(info.data);
-        navigate('/select');
+        // 식당 주인일 경우
+        if (info.data.is_host) {
+          navigate('/host');
+          // 일반 회원일 경우
+        } else {
+          navigate('/select');
+        }
         // false 인 경우 로그인 실패하고 알림 출력
       } else {
         alert('로그인에 실패했습니다. 다시 로그인해주세요.');
