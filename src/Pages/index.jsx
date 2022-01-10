@@ -8,3 +8,4 @@ export { default as SearchPage } from './SearchPage';
 export { default as SelectPage } from './SelectPage';
 export { default as District1Page } from './District1Page';
 export { default as District2Page } from './District2Page';
+export { default as HostPage } from './HostPage';

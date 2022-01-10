@@ -12,6 +12,7 @@ import {
   MyPage,
   District1Page,
   District2Page,
+  HostPage,
 } from '@pages';
 import PublicRouter from './PublicRouter';
 
@@ -29,6 +30,7 @@ const Routers = () => {
             <Route path="" element={<District2Page />} />
             <Route path="detail/:resId" element={<DetailPage />} />
           </Route>
+          <Route path="/host" element={<HostPage />} />
           <Route path="/select" element={<SelectPage />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/reservation" element={<MyReservationPage />} />
