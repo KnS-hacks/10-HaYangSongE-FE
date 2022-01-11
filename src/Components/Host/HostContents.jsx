@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import AdminListBox from '../Common/AdminListBox';
 
 const Info = styled.span`
-  font-size: 2rem;
+  font-size: 1.3rem;
   font-weight: 500;
   padding: 10px 10px;
   display: inline-block;
@@ -60,19 +60,24 @@ const TESTDATA1 = [
 
 const TESTDATA2 = ['밈미', '옹이', '기다리는 사람'];
 const TESTDATA3 = ['테스트1', '테스트2', '테스트3'];
+const TESTDATA4 = ['테스트4', '테스트5', '테스트6'];
+const TESTDATA5 = ['테스트7', '테스트8', '테스트9'];
 
 const HostContents = ({ userName, nowTime }) => {
   const [waitingList, setwaitingList] = useState([]);
+  const [acceptList, setAcceptList] = useState([]);
   const selectRes = e => {
     if (e.target.id === '0') {
       setwaitingList(TESTDATA2);
+      setAcceptList(TESTDATA4);
     } else {
       setwaitingList(TESTDATA3);
+      setAcceptList(TESTDATA5);
     }
   };
   return (
     <>
-      <Info>{userName}</Info>
+      <Info>{userName} 님 안녕하세요.</Info>
       <Time>{nowTime}</Time>
       <Lists>
         <AdminListBox title="식당 목록">
@@ -93,7 +98,15 @@ const HostContents = ({ userName, nowTime }) => {
             )}
           </>
         </AdminListBox>
-        <AdminListBox title="현재 수락된 대기열 목록" />
+        <AdminListBox title="현재 수락된 대기열 목록">
+          <>
+            {acceptList.length === 0 ? (
+              <NoneText>목록이 없습니다.</NoneText>
+            ) : (
+              acceptList.map(item => <Item>{item}</Item>)
+            )}
+          </>
+        </AdminListBox>
       </Lists>
     </>
   );
