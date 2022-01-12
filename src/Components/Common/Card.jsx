@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Button from './Button';
 import Tag from './Tag';
 import StyledLink from './StyledLink';
+import Logo from '../../Assets/Icons/Logo.svg';
 // card Box
 const CardBox = styled.div`
   display: flex;
@@ -13,6 +14,21 @@ const CardBox = styled.div`
   padding: 10px;
   margin-bottom: 30px;
   box-sizing: border-box;
+`;
+
+const Title = styled.div`
+  display: flex;
+  align-items: center;
+  width: 300px;
+  // 가게 이름
+  & > p:nth-child(1) {
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 45px;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
 `;
 
 // 맛있는 음식 사진
@@ -28,28 +44,32 @@ const StoreContent = styled.div`
 
 const Info = styled.div`
   height: 75%;
-  // 가게 이름
-  & > p:nth-child(1) {
-    font-size: 1.6rem;
-    font-weight: 700;
-    line-height: 45px;
-  }
+
   // 가게 주소
   & > p:nth-child(2) {
     font-size: 1rem;
     padding-bottom: 10px;
+    width: 300px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 `;
 
 function Card({ title, address, step, resId, pic }) {
   return (
     <CardBox>
-      <FoodImg src={pic} />
+      {pic ? (
+        <FoodImg src={pic} alt="사진이 없습니다." />
+      ) : (
+        <FoodImg src={Logo} alt="사진이 없습니다." />
+      )}
       <StoreContent>
         <Info>
-          <p>{title}</p>
+          <Title>
+            <p>{title}</p>
+            <Tag step={step} />
+          </Title>
           <p>{address}</p>
-          <Tag step={step} />
         </Info>
         <StyledLink Url={`detail/${resId}`}>
           <Button Content="대기 등록" Height="50px" width="100%" />
@@ -69,7 +89,7 @@ Card.propTypes = {
 
 Card.defaultProps = {
   step: 0,
-  pic: '사진이 없어여',
+  pic: '사진이 없습니다.',
 };
 
 export default Card;

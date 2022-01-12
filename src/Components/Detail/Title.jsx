@@ -2,7 +2,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import Tag from '../Common/Tag';
 import Colors from '../../Assets/Colors/Colors';
 
 const Container = styled.div`
@@ -31,7 +30,11 @@ const Address = styled.p`
   line-height: 40px;
 `;
 
-const Title = ({ restaurant, address, waiting, step }) => {
+const Divider = styled.span`
+  font-weight: 500;
+`;
+
+const Title = ({ restaurant, address, waiting, phoneNumber }) => {
   return (
     <Container>
       <Restaurant>
@@ -39,25 +42,27 @@ const Title = ({ restaurant, address, waiting, step }) => {
         <span>
           <WaitingNum>{waiting ? waiting.length : 0}</WaitingNum>팀 대기 중
         </span>
+        <Address>
+          {address} <Divider> | </Divider>
+          {phoneNumber}
+        </Address>
       </Restaurant>
-      <Address>{address}</Address>
-      <Tag step={step} />
     </Container>
   );
 };
 
 Title.propTypes = {
   restaurant: PropTypes.string,
+  phoneNumber: PropTypes.string,
   address: PropTypes.string,
   waiting: PropTypes.array,
-  step: PropTypes.number,
 };
 
 Title.defaultProps = {
   restaurant: '',
+  phoneNumber: '',
   address: '',
   waiting: [],
-  step: 0,
 };
 
 export default Title;

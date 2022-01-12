@@ -12,6 +12,7 @@ const CardDiv = styled.div`
   align-items: center;
   margin-top: 2vh;
   width: 100vw;
+  height: 80vh;
 `;
 
 const NoneInfo = styled.p`
@@ -41,7 +42,7 @@ const Content = ({ listData }) => {
             <Card
               key={item.id}
               title={item.name}
-              address={item.branch_name}
+              address={item.detail_address}
               step={item.vaccine_condition}
               resId={item.id}
               pic={item.restaurant_photo}
