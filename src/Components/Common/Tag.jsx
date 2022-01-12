@@ -9,7 +9,8 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 80px;
+  width: 78px;
+  min-width: 78px;
   height: 35px;
   padding: 2px;
   box-sizing: border-box;

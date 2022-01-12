@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
@@ -26,7 +27,6 @@ const Detail = ({ resId }) => {
     } catch (error) {
       return error;
     }
-    return Restaurant;
   };
 
   useEffect(() => {
@@ -41,11 +41,13 @@ const Detail = ({ resId }) => {
       <Container>
         <Title
           restaurant={Restaurant.name}
-          address={Restaurant.branch_name}
+          phoneNumber={Restaurant.phone_number}
+          address={Restaurant.detail_address}
           waiting={Restaurant.waitings}
           step={Restaurant.vaccine_condition}
         />
         <Content
+          pic={Restaurant.restaurant_photo}
           restaurantName={Restaurant.name}
           menu={Restaurant.menu}
           resId={resId}

@@ -32,7 +32,10 @@ const Routers = () => {
           </Route>
           <Route path="/host" element={<HostPage />} />
           <Route path="/select" element={<SelectPage />} />
-          <Route path="/search" element={<SearchPage />} />
+          <Route path="/search/*">
+            <Route path="" element={<SearchPage />} />
+            <Route path="detail/:resId" element={<DetailPage />} />
+          </Route>
           <Route path="/reservation" element={<MyReservationPage />} />
           <Route path="/mypage" element={<MyPage />} />
         </Route>

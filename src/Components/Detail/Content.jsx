@@ -5,13 +5,63 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { useRecoilState } from 'recoil';
 import Colors from '../../Assets/Colors/Colors';
-import TestRes from '../../Assets/Images/TestRestaurant.jpg';
 import Button from '../Common/Button';
 import Modal from '../Common/Modal';
 import { friendsState, restaurantState } from '../../Recoil/Reservation';
 import Step1 from './Reservation/Step1';
 import Step2 from './Reservation/Step2';
 import Step3 from './Reservation/Step3';
+
+const Container = styled.div`
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 800px;
+
+  div p:nth-child(1) {
+    border-bottom: 2px solid #8f8f8f5e;
+  }
+`;
+
+const Title = styled.p`
+  width: 500px;
+  font-size: 2.5rem;
+  padding-bottom: 10px;
+`;
+
+const ResPic = styled.img`
+  width: 500px;
+  height: 500px;
+`;
+
+const Info = styled.p`
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-family: 500;
+`;
+
+const Menu = styled.div`
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(${props => props.rowNum}, 80px);
+  width: 500px;
+  /* text-align: center; */
+  div {
+    font-size: 1.3rem;
+  }
+
+  div:nth-child(2n-1) {
+    font-weight: 500;
+  }
+  // 가격 text
+  div:nth-child(2n) {
+    text-align: center;
+  }
+`;
 
 const BtnDiv = styled.div`
   button {
@@ -24,9 +74,15 @@ const BtnDiv = styled.div`
   }
 `;
 
-const Container = styled.div``;
-
-const Content = ({ restaurantName, waiting, address, step, resId }) => {
+const Content = ({
+  pic,
+  restaurantName,
+  menu,
+  waiting,
+  address,
+  step,
+  resId,
+}) => {
   const [visible, setVisible] = useState(false);
   const [ResId, setResId] = useRecoilState(restaurantState);
   const [FriendsList, setFriendsList] = useRecoilState(friendsState);
@@ -73,23 +129,34 @@ const Content = ({ restaurantName, waiting, address, step, resId }) => {
   return (
     <>
       <Container>
-        <img src={TestRes} alt="restaurantPic" />
-        <img src={TestRes} alt="restaurantPic" />
-        <img src={TestRes} alt="restaurantPic" />
-        <img src={TestRes} alt="restaurantPic" />
-        <img src={TestRes} alt="restaurantPic" />
-        <img src={TestRes} alt="restaurantPic" />
-        <img src={TestRes} alt="restaurantPic" />
+        <div>
+          <ResPic src={pic} />
+        </div>
+        <div>
+          <Title>MENU</Title>
+          {menu.length ? (
+            <Menu rowNum={menu.length}>
+              {menu.map(item => (
+                <>
+                  <div>{item.name}</div>
+                  <div>{item.price} 원</div>
+                </>
+              ))}
+            </Menu>
+          ) : (
+            <Info>등록된 메뉴가 없습니다.</Info>
+          )}
+        </div>
       </Container>
       <BtnDiv>
-        <Button
+        {/* <Button
           ClickFunc={toggleModal}
           Width="80%"
           Height="80px"
           Content="바로 줄서기"
           backgroundColor={Colors.main}
           Color="#ffffff"
-        />
+        /> */}
       </BtnDiv>
       <Modal
         title="대기 등록"
@@ -102,7 +169,9 @@ const Content = ({ restaurantName, waiting, address, step, resId }) => {
 };
 
 Content.propTypes = {
+  pic: PropTypes.string,
   restaurantName: PropTypes.string,
+  menu: PropTypes.array,
   address: PropTypes.string,
   waiting: PropTypes.number,
   step: PropTypes.number,
@@ -110,7 +179,9 @@ Content.propTypes = {
 };
 
 Content.defaultProps = {
+  pic: '',
   restaurantName: '',
+  menu: [],
   address: '',
   waiting: 0,
   step: 0,

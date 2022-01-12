@@ -53,6 +53,7 @@ const ResultBox2 = styled.div`
   margin-top: 3vh;
   display: flex;
   flex-wrap: wrap;
+  height: 65vh;
   overflow-y: auto;
 `;
 
@@ -78,7 +79,7 @@ const SearchContent = ({ listData, handleInput }) => {
               <Card
                 key={item.id}
                 title={item.name}
-                address={item.branch_name}
+                address={item.detail_address}
                 step={item.vaccine_condition}
                 resId={item.id}
                 pic={item.restaurant_photo}
