@@ -11,6 +11,7 @@ import { friendsState, restaurantState } from '../../Recoil/Reservation';
 import Step1 from './Reservation/Step1';
 import Step2 from './Reservation/Step2';
 import Step3 from './Reservation/Step3';
+import Logo from '../../Assets/Icons/Logo.svg';
 
 const Container = styled.div`
   display: flex;
@@ -129,9 +130,7 @@ const Content = ({
   return (
     <>
       <Container>
-        <div>
-          <ResPic src={pic} />
-        </div>
+        <div>{pic ? <ResPic src={pic} /> : <ResPic src={Logo} />}</div>
         <div>
           <Title>MENU</Title>
           {menu.length ? (
