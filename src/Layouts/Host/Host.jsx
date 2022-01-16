@@ -1,11 +1,28 @@
+/* eslint-disable consistent-return */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
+import { hostRes } from '../../api/User';
 import HostContents from '../../Components/Host/HostContents';
 import { UserInfo } from '../../Recoil/User';
 
 const Host = () => {
   const profile = useRecoilValue(UserInfo);
+  const [hostResList, sethostResList] = useState([]);
+
+  const fetch = async () => {
+    try {
+      const list = await hostRes(profile.id);
+      sethostResList(list.data);
+    } catch (error) {
+      return error;
+    }
+  };
+
+  useEffect(() => {
+    fetch();
+  }, []);
+
   // 현재 시각 표기
   const [Today, setToday] = useState('');
   const createDate = () => {
@@ -32,7 +49,11 @@ const Host = () => {
 
   return (
     <>
-      <HostContents userName={profile.username} nowTime={Today} />
+      <HostContents
+        userName={profile.username}
+        nowTime={Today}
+        resList={hostResList}
+      />
     </>
   );
 };

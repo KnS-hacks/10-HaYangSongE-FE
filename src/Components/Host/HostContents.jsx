@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import propTypes from 'prop-types';
@@ -47,33 +49,16 @@ const Item = styled.p`
   }
 `;
 
-const TESTDATA1 = [
-  {
-    id: 1,
-    name: '맥도날드 두정 DT 점',
-  },
-  {
-    id: 2,
-    name: '두꺼비 식당',
-  },
-];
-
 const TESTDATA2 = ['밈미', '옹이', '기다리는 사람'];
 const TESTDATA3 = ['테스트1', '테스트2', '테스트3'];
 const TESTDATA4 = ['테스트4', '테스트5', '테스트6'];
 const TESTDATA5 = ['테스트7', '테스트8', '테스트9'];
 
-const HostContents = ({ userName, nowTime }) => {
+const HostContents = ({ userName, nowTime, resList }) => {
   const [waitingList, setwaitingList] = useState([]);
   const [acceptList, setAcceptList] = useState([]);
   const selectRes = e => {
-    if (e.target.id === '0') {
-      setwaitingList(TESTDATA2);
-      setAcceptList(TESTDATA4);
-    } else {
-      setwaitingList(TESTDATA3);
-      setAcceptList(TESTDATA5);
-    }
+    setwaitingList(resList[e.target.id].waitings);
   };
   return (
     <>
@@ -82,7 +67,7 @@ const HostContents = ({ userName, nowTime }) => {
       <Lists>
         <AdminListBox title="식당 목록">
           <div>
-            {TESTDATA1.map((item, index) => (
+            {resList.map((item, index) => (
               <Item key={item.id} id={index} onClick={selectRes}>
                 {item.name}
               </Item>
@@ -94,7 +79,7 @@ const HostContents = ({ userName, nowTime }) => {
             {waitingList.length === 0 ? (
               <NoneText>대기열 목록이 없습니다.</NoneText>
             ) : (
-              waitingList.map(item => <Item>{item}</Item>)
+              waitingList.map(item => <Item key={item.id}>{item.leader}</Item>)
             )}
           </>
         </AdminListBox>
@@ -115,10 +100,12 @@ const HostContents = ({ userName, nowTime }) => {
 HostContents.propTypes = {
   userName: propTypes.string.isRequired,
   nowTime: propTypes.string,
+  resList: propTypes.array,
 };
 
 HostContents.defaultProps = {
   nowTime: 'none',
+  resList: [],
 };
 
 export default HostContents;

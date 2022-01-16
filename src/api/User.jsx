@@ -51,3 +51,15 @@ export const userWaiting = async param => {
   });
   return res;
 };
+
+// ----- HOST ----- //
+
+// 특정 host 의 식당 목록 조회
+export const hostRes = async param => {
+  const res = await api({
+    url: `/restaurant?host=${param}`,
+    type: 'GET',
+    param,
+  });
+  return res;
+};
