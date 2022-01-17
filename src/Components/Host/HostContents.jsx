@@ -6,6 +6,7 @@ import propTypes from 'prop-types';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import AdminListBox from '../Common/AdminListBox';
+import Tag from '../Common/Tag';
 
 const Info = styled.span`
   font-size: 1.3rem;
@@ -36,6 +37,18 @@ const NoneText = styled.div`
   justify-content: center;
 `;
 
+const MemberItem = styled.div`
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 15px 15px;
+  display: flex;
+  align-items: center;
+
+  p:nth-child(1) {
+    width: 180px;
+  }
+`;
+
 const Item = styled.p`
   font-size: 1.2rem;
   font-weight: 500;
@@ -49,16 +62,14 @@ const Item = styled.p`
   }
 `;
 
-const TESTDATA2 = ['밈미', '옹이', '기다리는 사람'];
-const TESTDATA3 = ['테스트1', '테스트2', '테스트3'];
-const TESTDATA4 = ['테스트4', '테스트5', '테스트6'];
-const TESTDATA5 = ['테스트7', '테스트8', '테스트9'];
-
 const HostContents = ({ userName, nowTime, resList }) => {
   const [waitingList, setwaitingList] = useState([]);
-  const [acceptList, setAcceptList] = useState([]);
+  const [memberList, setmemberList] = useState([]);
   const selectRes = e => {
     setwaitingList(resList[e.target.id].waitings);
+  };
+  const selectWaiting = e => {
+    setmemberList(waitingList[e.target.id].member);
   };
   return (
     <>
@@ -79,16 +90,25 @@ const HostContents = ({ userName, nowTime, resList }) => {
             {waitingList.length === 0 ? (
               <NoneText>대기열 목록이 없습니다.</NoneText>
             ) : (
-              waitingList.map(item => <Item key={item.id}>{item.leader}</Item>)
+              waitingList.map((item, index) => (
+                <Item key={item.id} id={index} onClick={selectWaiting}>
+                  {item.leader}
+                </Item>
+              ))
             )}
           </>
         </AdminListBox>
-        <AdminListBox title="현재 수락된 대기열 목록">
+        <AdminListBox title="대기열 인원">
           <>
-            {acceptList.length === 0 ? (
+            {memberList.length === 0 ? (
               <NoneText>목록이 없습니다.</NoneText>
             ) : (
-              acceptList.map(item => <Item>{item}</Item>)
+              memberList.map((item, index) => (
+                <MemberItem>
+                  <p key={item.index}>{item.username}</p>
+                  <Tag step={item.vaccine_step} />
+                </MemberItem>
+              ))
             )}
           </>
         </AdminListBox>
