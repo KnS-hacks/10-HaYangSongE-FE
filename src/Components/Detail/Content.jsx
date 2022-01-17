@@ -148,14 +148,14 @@ const Content = ({
         </div>
       </Container>
       <BtnDiv>
-        {/* <Button
+        <Button
           ClickFunc={toggleModal}
           Width="80%"
           Height="80px"
           Content="바로 줄서기"
           backgroundColor={Colors.main}
           Color="#ffffff"
-        /> */}
+        />
       </BtnDiv>
       <Modal
         title="대기 등록"
