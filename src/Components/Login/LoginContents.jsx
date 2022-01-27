@@ -26,7 +26,7 @@ const Content = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  width: 35vw;
+  width: 450px;
   height: 80vh;
 `;
 

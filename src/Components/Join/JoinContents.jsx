@@ -8,12 +8,11 @@ import Button from '../Common/Button';
 import Inputs, { InputNum } from '../Common/Inputs';
 
 const Container = styled.div`
-  width: 50vw;
+  width: 750px;
   height: 100vh;
   margin: 0 auto;
 
   &:nth-child(1) > div {
-    height: 65%;
     padding: 50px;
   }
 
@@ -31,7 +30,7 @@ const Title = styled.p`
   text-align: center;
   font-weight: 700;
   font-size: 2rem;
-  padding: 50px 30px 40px 30px;
+  padding: 50px 30px 20px 30px;
 `;
 
 const Contents = ({ inputFunc, joinFunc, inputValues }) => {
