@@ -4,11 +4,15 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
+import { useDispatch, useSelector } from 'react-redux';
 import Contents from '../../Components/Login/LoginContents';
 import { UserData, UserInfo } from '../../Recoil/User';
 import { userInfoAPI, userLogin } from '../../api/User';
+import { login } from '../../module/user';
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.user);
   const navigate = useNavigate();
 
   // input 관련 로직
@@ -42,6 +46,9 @@ const Login = () => {
         setUser(userData.data);
         const info = await userInfoAPI(userData.data.username);
         setUserProfile(info.data);
+
+        // dispatch 실행
+        dispatch(login(info.data));
         // 식당 주인일 경우
         if (info.data.is_host) {
           navigate('/host');
