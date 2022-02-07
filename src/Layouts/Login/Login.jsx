@@ -41,14 +41,15 @@ const Login = () => {
     try {
       // api 통신
       const userData = await userLogin(values);
+      // dispatch 실행
+      dispatch(login(userData.data));
+      console.log(user);
       // success 가 true 일 경우에만 페이지 이동
-      if (userData.data.success) {
+      if (userData.status === 200) {
         setUser(userData.data);
         const info = await userInfoAPI(userData.data.username);
         setUserProfile(info.data);
 
-        // dispatch 실행
-        dispatch(login(info.data));
         // 식당 주인일 경우
         if (info.data.is_host) {
           navigate('/host');
