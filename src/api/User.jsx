@@ -5,7 +5,7 @@ import api from './api';
 // 로그인
 export const userLogin = async param => {
   const res = await api({
-    url: '/login',
+    url: '/guest/login',
     type: 'POST',
     param,
   });

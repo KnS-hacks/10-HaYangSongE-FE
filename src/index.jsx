@@ -3,6 +3,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+import { persistStore } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
+
 import './index.css';
 import { RecoilRoot } from 'recoil';
 import axios from 'axios';
@@ -14,16 +17,18 @@ axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
 
 const devTools =
-  window.__REDUX__DEVTOOLS_EXTENSION__ &&
-  window.__REDUX__DEVTOOLS_EXTENSION__();
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 const store = createStore(rootReducer, devTools);
+const persistor = persistStore(store);
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <RecoilRoot>
-        <App />
-      </RecoilRoot>
+      <PersistGate loading={null} persistor={persistor}>
+        <RecoilRoot>
+          <App />
+        </RecoilRoot>
+      </PersistGate>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
