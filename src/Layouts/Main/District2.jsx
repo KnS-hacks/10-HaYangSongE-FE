@@ -19,9 +19,9 @@ const District2 = () => {
 
   const fetch = async () => {
     try {
-      const list = await restaurantList('SE');
+      const list = await restaurantList();
       setTimeout(() => {
-        setDis2List(list.data);
+        setDis2List(list.data.data);
         setisLoading(false);
       }, 500);
     } catch (error) {

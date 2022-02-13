@@ -1,13 +1,10 @@
 // 액션 정의
 const LOGIN = 'user/LOGIN';
 const LOGOUT = 'user/LOGOUT';
-const USERPROFILE = 'user/USERPROFILE';
 
 // 액션 생성 함수
 // 로그인
 export const login = payload => ({ type: LOGIN, data: payload });
-// 유저 정보 저장
-export const userProfile = payload => ({ type: USERPROFILE, data: payload });
 // 로그아웃
 export const logout = () => ({ type: LOGOUT, payload: {} });
 
@@ -22,10 +19,8 @@ const user = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN:
       return action.data;
-    case USERPROFILE:
-      return action.data;
     case LOGOUT:
-      return '로그아웃';
+      return console.log('로그아웃');
     default:
       return state;
   }
