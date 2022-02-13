@@ -21,7 +21,7 @@ const District1 = () => {
     try {
       const list = await restaurantList('WN');
       setTimeout(() => {
-        setDis1List(list.data);
+        setDis1List(list.data.data);
         setisLoading(false);
       }, 500);
     } catch (error) {

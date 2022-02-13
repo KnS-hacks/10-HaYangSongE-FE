@@ -22,7 +22,8 @@ const Detail = ({ resId }) => {
   const fetch = async () => {
     try {
       const restaurant = await restaurantDetail(resId);
-      setRestaurant(restaurant.data);
+      setRestaurant(restaurant.data.data);
+      console.log(Restaurant);
       setResId(resId);
     } catch (error) {
       return error;
@@ -41,15 +42,15 @@ const Detail = ({ resId }) => {
       <Container>
         <Title
           restaurant={Restaurant.name}
-          phoneNumber={Restaurant.phone_number}
-          address={Restaurant.detail_address}
+          phoneNumber={Restaurant.phoneNumber}
+          address={Restaurant.detailAddress}
           waiting={Restaurant.waitings}
-          step={Restaurant.vaccine_condition}
+          step={Restaurant.vaccineCondition}
         />
         <Content
-          pic={Restaurant.restaurant_photo}
+          pic={Restaurant.restaurantPhoto}
           restaurantName={Restaurant.name}
-          menu={Restaurant.menu}
+          menu={Restaurant.menus}
           resId={resId}
         />
       </Container>

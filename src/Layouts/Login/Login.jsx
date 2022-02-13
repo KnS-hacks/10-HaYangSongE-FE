@@ -3,26 +3,20 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
 import { useDispatch, useSelector } from 'react-redux';
 import Contents from '../../Components/Login/LoginContents';
-import { UserData, UserInfo } from '../../Recoil/User';
 import { userInfoAPI, userLogin } from '../../api/User';
 import { login } from '../../module/user';
+import { userProfile } from '../../module/profile';
 
 const Login = () => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.user);
+  const profile = useSelector(state => state.profile);
   const navigate = useNavigate();
 
   // input 관련 로직
   const [inputs, setinputs] = useState({});
-
-  // 로그인 정보 저장
-  const [User, setUser] = useRecoilState(UserData);
-
-  // 유저 정보 저장
-  const [UserProfile, setUserProfile] = useRecoilState(UserInfo);
 
   const handleInputs = e => {
     setinputs({
@@ -37,25 +31,23 @@ const Login = () => {
       username: inputs.username,
       password: inputs.password,
     };
-    setUserProfile({});
     try {
       // api 통신
       const userData = await userLogin(values);
-      // dispatch 실행
+      // user token - dispatch 실행
       dispatch(login(userData.data));
-      console.log(user);
+
       // success 가 true 일 경우에만 페이지 이동
       if (userData.status === 200) {
-        setUser(userData.data);
-        const info = await userInfoAPI(userData.data.username);
-        setUserProfile(info.data);
-
-        // 식당 주인일 경우
-        if (info.data.is_host) {
-          navigate('/host');
+        const info = await userInfoAPI(userData.data.id);
+        // user 정보 - dispatch 실행
+        dispatch(userProfile(info.data.data));
+        // 일반 회원인 경우
+        if (userData.data.authorities[0].authority === 'USER') {
+          navigate('/select');
           // 일반 회원일 경우
         } else {
-          navigate('/select');
+          navigate('/host');
         }
         // false 인 경우 로그인 실패하고 알림 출력
       } else {

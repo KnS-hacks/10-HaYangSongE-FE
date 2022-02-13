@@ -20,7 +20,7 @@ const api = ({
   };
 
   if (accessToken !== null) {
-    headers.token = accessToken.user;
+    headers.token = JSON.parse(accessToken.user).token;
   }
 
   return Axios({
