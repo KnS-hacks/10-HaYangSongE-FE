@@ -18,7 +18,7 @@ const Search = () => {
   const fetch = async () => {
     try {
       const list = await restaurantSearch(searchText);
-      setResList(list.data);
+      setResList(list.data.data);
     } catch (error) {
       return error;
     }
