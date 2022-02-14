@@ -4,21 +4,14 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { useRecoilValue } from 'recoil';
+import { useSelector } from 'react-redux';
 import { userEdit } from '../../api/User';
 import Contents from '../../Components/MyPage/MyPageContent';
-import { UserData, UserInfo } from '../../Recoil/User';
 
 const MyPage = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
-  const user = useSelector(state => state.user);
   const profile = useSelector(state => state.profile);
-
-  // const user = useRecoilValue(UserData);
-  // const profile = useRecoilValue(UserInfo);
 
   // input 관련 로직
   const [inputs, setinputs] = useState({});

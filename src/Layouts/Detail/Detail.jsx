@@ -23,7 +23,6 @@ const Detail = ({ resId }) => {
     try {
       const restaurant = await restaurantDetail(resId);
       setRestaurant(restaurant.data.data);
-      console.log(Restaurant);
       setResId(resId);
     } catch (error) {
       return error;

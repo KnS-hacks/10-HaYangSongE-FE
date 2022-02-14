@@ -13,7 +13,6 @@ const Join = () => {
 
   // onChange 함수
   const handleInputs = e => {
-    // const { name, value } = e.target;
     setinputs({
       ...inputs,
       [e.target.name]: e.target.value,
@@ -26,7 +25,7 @@ const Join = () => {
       username: inputs.username,
       full_name: inputs.full_name,
       vaccine_step: Number(inputs.vaccine_step),
-      vaccine_date: inputs.vaccine_date,
+      vaccine_date: `${inputs.vaccine_date}T00:00:00`,
       phone_number: inputs.phone_number,
       password: inputs.password,
     };
@@ -35,6 +34,7 @@ const Join = () => {
       await userJoin(values);
       navigate('/');
     } catch (error) {
+      console.log(values);
       alert('입력 사항을 확인하고 다시 회원가입을 해주세요.');
     }
   };
