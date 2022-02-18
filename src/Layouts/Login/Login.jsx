@@ -34,7 +34,6 @@ const Login = () => {
     try {
       // api 통신
       const userData = await userLogin(values);
-      console.log(userData);
       // user token - dispatch 실행
       dispatch(login(userData.data));
 
@@ -43,6 +42,7 @@ const Login = () => {
         const info = await userInfoAPI();
         // user 정보 - dispatch 실행
         dispatch(userProfile(info.data.data));
+        console.log(user);
         // 일반 회원인 경우
         if (userData.data.authorities[0].authority === 'USER') {
           navigate('/select');

@@ -2,7 +2,9 @@ import Axios from 'axios';
 
 Axios.defaults.baseURL = 'http://52.78.74.152';
 
-const accessToken = JSON.parse(sessionStorage.getItem('persist:root'));
+const accessToken = JSON.parse(
+  JSON.parse(sessionStorage.getItem('persist:root')),
+);
 
 const api = ({
   url,
@@ -20,7 +22,7 @@ const api = ({
   };
 
   if (accessToken !== null) {
-    headers.token = JSON.parse(accessToken.user).token;
+    headers.token = accessToken.token;
   }
 
   return Axios({
