@@ -20,6 +20,9 @@ const Routers = () => {
   return (
     <BrowserRouter>
       <Routes>
+        {/* 토큰이 존재하지 않을 경우 login, join 만 접근 가능  */}
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/join" element={<JoinPage />} />
         {/* 토큰이 존재할 경우 login, join 빼고 접근 가능  */}
         <Route element={<PublicRouter />}>
           <Route path="/district1/*">
@@ -39,9 +42,6 @@ const Routers = () => {
           <Route path="/reservation" element={<MyReservationPage />} />
           <Route path="/mypage" element={<MyPage />} />
         </Route>
-        {/* 토큰이 존재하지 않을 경우 login, join 만 접근 가능  */}
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/join" element={<JoinPage />} />
       </Routes>
     </BrowserRouter>
   );

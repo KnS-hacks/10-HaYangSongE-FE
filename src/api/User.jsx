@@ -25,7 +25,7 @@ export const userJoin = async param => {
 // user 정보
 export const userInfoAPI = async param => {
   const res = await api({
-    url: `/guest/mypage`,
+    url: '/guest/mypage',
     type: 'GET',
     param,
   });

@@ -11,7 +11,7 @@ import { RecoilRoot } from 'recoil';
 import axios from 'axios';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import rootReducer from './module';
+import rootReducer from './module/redux';
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
