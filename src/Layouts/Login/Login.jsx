@@ -5,9 +5,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Contents from '../../Components/Login/LoginContents';
-import { userInfoAPI, userLogin } from '../../api/User';
-import { login } from '../../module/user';
-import { userProfile } from '../../module/profile';
+import { userLogin } from '../../api/User';
+import { login } from '../../module/redux/user';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -34,19 +33,14 @@ const Login = () => {
     try {
       // api 통신
       const userData = await userLogin(values);
+      console.log(userData.status);
       // user token - dispatch 실행
       dispatch(login(userData.data));
-
       // success 가 true 일 경우에만 페이지 이동
       if (userData.status === 200) {
-        const info = await userInfoAPI();
-        // user 정보 - dispatch 실행
-        dispatch(userProfile(info.data.data));
-        console.log(user);
-        // 일반 회원인 경우
+        // 일반 회원일 경우
         if (userData.data.authorities[0].authority === 'USER') {
           navigate('/select');
-          // 일반 회원일 경우
         } else {
           navigate('/host');
         }

@@ -1,10 +1,7 @@
 import Axios from 'axios';
+import getToken from '../module/token/tokenHook';
 
 Axios.defaults.baseURL = 'http://52.78.74.152';
-
-const accessToken = JSON.parse(
-  JSON.parse(sessionStorage.getItem('persist:root')),
-);
 
 const api = ({
   url,
@@ -18,13 +15,8 @@ const api = ({
     'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH',
     'Access-Control-Allow-Headers':
       'Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization',
-    token: accessToken,
+    token: getToken(),
   };
-
-  if (accessToken !== null) {
-    headers.token = accessToken.token;
-  }
-
   return Axios({
     method: type,
     url: `${url}`,

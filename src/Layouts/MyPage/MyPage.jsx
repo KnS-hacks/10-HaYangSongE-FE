@@ -4,11 +4,14 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { userEdit } from '../../api/User';
+import { useDispatch, useSelector } from 'react-redux';
+import { userEdit, userInfoAPI } from '../../api/User';
 import Contents from '../../Components/MyPage/MyPageContent';
+import { userProfile } from '../../module/redux/profile';
 
 const MyPage = () => {
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
 
   const profile = useSelector(state => state.profile);
@@ -49,6 +52,21 @@ const MyPage = () => {
       [e.target.name]: e.target.value,
     });
   };
+
+  const getUserInfo = async () => {
+    try {
+      const info = await userInfoAPI();
+      // user 정보 - dispatch 실행
+      dispatch(userProfile(info.data.data));
+      // 일반 회원인 경우
+    } catch (error) {
+      return error;
+    }
+  };
+
+  useEffect(() => {
+    getUserInfo();
+  }, []);
 
   // 렌더링 되면 inputs 에 기존의 userData 넣기
   useEffect(() => {
