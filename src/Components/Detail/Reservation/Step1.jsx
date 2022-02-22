@@ -2,12 +2,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
 import { useRecoilState } from 'recoil';
 import PropTypes from 'prop-types';
 import { ReactComponent as Id } from '../../../Assets/Icons/Id.svg';
 import Colors from '../../../Assets/Colors/Colors';
 import { friendsState } from '../../../Recoil/Reservation';
 import Button from '../../Common/Button';
+import { addList } from '../../../module/redux/reservation';
 
 const Container = styled.div`
   width: 100%;
@@ -96,16 +98,21 @@ const NoneInfo = styled.p`
 `;
 
 const Step1 = ({ increasePageFunc }) => {
+  const dispatch = useDispatch();
+  const list = useSelector(state => state.reservation);
   const [people, setpeople] = useState('');
-  const [Friends, setFriends] = useRecoilState(friendsState);
+  const [Friends, setFriends] = useState([]);
   const [Active, setActive] = useState(true);
+
   const changePeople = e => {
     setpeople(e.target.value);
   };
 
-  const chageList = e => {
+  const changeList = e => {
     if (e.keyCode === 13 && people) {
+      console.log(Friends);
       setFriends([...Friends, { username: people }]);
+      dispatch(addList(Friends));
       setpeople('');
       e.target.value = '';
     }
@@ -139,7 +146,7 @@ const Step1 = ({ increasePageFunc }) => {
           <Id width="18" height="18" />
           <input
             onChange={changePeople}
-            onKeyUp={chageList}
+            onKeyUp={changeList}
             placeholder="일행의 계정을 태그해보세요."
           />
         </InputBox>
