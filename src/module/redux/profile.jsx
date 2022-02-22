@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 // 액션 정의
 const USERPROFILE = 'profile/USERPROFILE';
 const USERLOGOUT = 'profile/USERLOGOUT';
