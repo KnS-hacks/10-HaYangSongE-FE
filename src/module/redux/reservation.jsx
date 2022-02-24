@@ -1,21 +1,28 @@
 // 액션 정의
-const ADDLIST = 'reservation/ADDLIST';
-const DELLIST = 'reservation/DELLIST';
+const CLEAR_LIST = 'reservation/CLEAR_LIST';
+const ADD_LIST = 'reservation/ADD_LIST';
+const DEL_LIST = 'reservation/DEL_LIST';
 
 // 액션 생성
-export const addList = data => ({ type: ADDLIST, payload: data });
-export const delList = data => ({ type: DELLIST, payload: data });
+export const clearList = () => ({ type: CLEAR_LIST });
+export const addList = data => ({ type: ADD_LIST, payload: data });
+export const delList = data => ({ type: DEL_LIST, payload: data });
 
 // 초기 state
-const initialState = [];
+const initialState = '';
+let friends = [];
 
 const reservation = (state = initialState, action) => {
   switch (action.type) {
-    case ADDLIST:
-      console.log(action.data);
-      return action.data;
-    case DELLIST:
-      return action.data;
+    case ADD_LIST:
+      friends.push({ username: action.payload });
+      return friends;
+    case DEL_LIST:
+      friends = friends.filter(friend => friend.username !== action.payload);
+      return friends;
+    case CLEAR_LIST:
+      friends = [];
+      return friends;
     default:
       return state;
   }

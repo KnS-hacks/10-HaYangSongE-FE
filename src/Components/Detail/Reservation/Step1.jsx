@@ -9,7 +9,7 @@ import { ReactComponent as Id } from '../../../Assets/Icons/Id.svg';
 import Colors from '../../../Assets/Colors/Colors';
 import { friendsState } from '../../../Recoil/Reservation';
 import Button from '../../Common/Button';
-import { addList } from '../../../module/redux/reservation';
+import { addList, clearList, delList } from '../../../module/redux/reservation';
 
 const Container = styled.div`
   width: 100%;
@@ -98,8 +98,11 @@ const NoneInfo = styled.p`
 `;
 
 const Step1 = ({ increasePageFunc }) => {
+  // dispatch 를 사용하여 redux 에서 값을 변경하도록 함.
   const dispatch = useDispatch();
-  const list = useSelector(state => state.reservation);
+  // list 목록을 불러오는 selector
+  const FriendsList = useSelector(state => state.reservation);
+  // 입력된 사람을 저장하는 people state
   const [people, setpeople] = useState('');
   const [Friends, setFriends] = useState([]);
   const [Active, setActive] = useState(true);
@@ -110,16 +113,14 @@ const Step1 = ({ increasePageFunc }) => {
 
   const changeList = e => {
     if (e.keyCode === 13 && people) {
-      console.log(Friends);
-      setFriends([...Friends, { username: people }]);
-      dispatch(addList(Friends));
+      dispatch(addList(people));
       setpeople('');
       e.target.value = '';
     }
   };
 
   const checkList = () => {
-    if (Friends.length === 0) {
+    if (FriendsList.length === 0) {
       setActive(true);
     } else {
       setActive(false);
@@ -127,14 +128,15 @@ const Step1 = ({ increasePageFunc }) => {
   };
 
   useEffect(() => {
+    // DOM 이 생성되고, 사라질 때 return 문 실행
     checkList();
-  }, [Friends]);
+    return dispatch(clearList());
+  }, [FriendsList]);
 
   // 삭제 로직
   const delItem = e => {
-    setFriends(
-      Friends.filter(friend => friend.username !== e.target.innerHTML),
-    );
+    dispatch(delList(e.target.innerHTML));
+    // console.log(FriendsList);
   };
 
   return (
@@ -151,12 +153,12 @@ const Step1 = ({ increasePageFunc }) => {
           />
         </InputBox>
         <Tags>
-          {Friends.length === 0 ? (
+          {FriendsList.length === 0 ? (
             <Tags>
               <NoneInfo>현재 태그된 계정이 없습니다.</NoneInfo>
             </Tags>
           ) : (
-            Friends.map(tag => (
+            FriendsList.map(tag => (
               <Tag onClick={delItem}>
                 <span>{tag.username}</span>
               </Tag>
@@ -165,7 +167,7 @@ const Step1 = ({ increasePageFunc }) => {
         </Tags>
         <Info>
           <p>현재 입력된 인원</p>
-          <p>{Friends.length} 명</p>
+          <p>{FriendsList.length} 명</p>
         </Info>
       </Container>
       <Button Content="확인" ClickFunc={increasePageFunc} Disabled={Active} />
